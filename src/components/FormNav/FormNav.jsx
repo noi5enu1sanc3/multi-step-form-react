@@ -1,8 +1,10 @@
+import './FormNav.scss';
+
 function FormNav() {
   return (
-    <nav>
-      <button type="button">Go back</button>
-      <button type="button">Next step</button>
+    <nav className="form-nav">
+      <button type="button" className="form-nav__button form-nav__button_direction_back"><span>Go back</span></button>
+      <button type="button" className="form-nav__button form-nav__button_direction_next"><span>Next step</span></button>
     </nav>
   );
 }

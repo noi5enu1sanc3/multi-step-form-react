@@ -1,0 +1,38 @@
+@import '../sassStyles/mixins';
+
+$fn: ".form-nav";
+
+#{$fn} {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__button {
+    @include reset-button;
+
+    font-size: 14px;
+    font-weight: 500;
+    transition: all $transition-primary;
+
+    &_direction_back {
+      color: $cool-gray;
+
+      &:hover {
+        color: $marine-blue;
+        cursor: pointer;
+      }
+    }
+
+    &_direction_next {
+      border-radius: $radius-small;
+      padding: 15px 20px;
+      background-color: $marine-blue;
+      color: $magnolia;
+
+      &:hover {
+        background-color: $purplish-blue;
+        cursor: pointer;
+      }
+    }
+  }
+}

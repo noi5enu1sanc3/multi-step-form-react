@@ -1,0 +1,8 @@
+@import '../sassStyles/mixins';
+
+.form-container {
+  @include flex-column;
+  min-width: 55%;
+  min-height: 100%;
+  padding: 50px 0 30px;
+}

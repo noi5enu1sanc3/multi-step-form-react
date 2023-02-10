@@ -1,0 +1,36 @@
+@import './variables';
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin reset-text {
+  margin: 0;
+}
+
+@mixin reset-button {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+@mixin form-title {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: $marine-blue;
+}
+
+@mixin form-subtitle {
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: $cool-gray;
+}
+
+@mixin hide-default-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}

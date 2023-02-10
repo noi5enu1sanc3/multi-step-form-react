@@ -1,0 +1,109 @@
+@import '../sassStyles/variables';
+@import '../sassStyles/mixins';
+
+$sum: ".summary";
+
+#{$sum} {
+  &__title {
+    @include form-title;
+  }
+
+  &__subtitle {
+    @include form-subtitle;
+  }
+
+  &__billing-wrapper {
+    border-top-left-radius: $radius-small;
+    border-top-right-radius: $radius-small;
+    background-color: $alabaster;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 10px;
+  }
+
+  &__billing-plan {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    color: $marine-blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__change-button {
+    grid-column: 1;
+    grid-row: 2;
+    @include reset-button;
+    cursor: pointer;
+    justify-self: start;
+  }
+
+  &__change-text {
+    color: $cool-gray;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline $cool-gray;
+    transition: all $transition-primary;
+  }
+
+  &__change-button:hover > &__change-text {
+    color: $purplish-blue;
+    text-decoration: underline $purplish-blue;
+  }
+
+  &__plan-cost {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    justify-self: end;
+    color: $marine-blue;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__add-ons-list {
+    border-bottom-left-radius: $radius-small;
+    border-bottom-right-radius: $radius-small;
+    background-color: $alabaster;
+    padding: 0 25px 25px;
+  }
+
+  &__add-ons-item {
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__add-ons-item:first-child {
+    border-top: 1px solid $light-gray;
+  }
+
+  &__add-ons-title {
+    color: $cool-gray;
+    font-size: 14px;
+  }
+
+  &__add-ons-cost {
+    color: $marine-blue;
+    font-size: 14px;
+  }
+
+  &__total-wrapper {
+    padding: 25px 25px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__total-text {
+    color: $cool-gray;
+    font-size: 16px;
+  }
+
+  &__total-sum {
+    color: $purplish-blue;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

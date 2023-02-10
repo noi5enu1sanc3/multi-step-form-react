@@ -1,12 +1,31 @@
-@import './typography.scss';
+@import './variables';
+@import './typography';
+@import './mixins';
 
 #root {
   max-width: 1280px;
   height: 100vh;
   margin: 0 auto;
-  }
-
+}
 
 body {
   font-family: 'Ubuntu';
-  }
+  background-color: $magnolia;
+}
+
+span,
+input {
+  font-family: 'Ubuntu';
+}
+
+h1,
+h2,
+p {
+  @include reset-text;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

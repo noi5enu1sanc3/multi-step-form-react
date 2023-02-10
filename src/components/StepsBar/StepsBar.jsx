@@ -4,33 +4,33 @@ import './StepsBar.scss';
 function StepsBar() {
   return (
     <nav className="steps-bar-container">
-      <ul>
-        <li>
-          <button type="button">
-            <span>1</span>
-            <span>STEP 1</span>
-            <span>YOUR INFO</span>
+      <ul className="steps-bar-list">
+        <li className="bar-item">
+          <button type="button" className="bar-item__button">
+            <span className="bar-item__step-number">1</span>
+            <span className="bar-item__step-title">STEP 1</span>
+            <span className="bar-item__step-subtitle">YOUR INFO</span>
           </button>
         </li>
-        <li>
-          <button type="button">
-            <span>2</span>
-            <span>STEP 2</span>
-            <span>SELECT PLAN</span>
+        <li className="bar-item">
+          <button type="button" className="bar-item__button">
+            <span className="bar-item__step-number">2</span>
+            <span className="bar-item__step-title">STEP 2</span>
+            <span className="bar-item__step-subtitle">SELECT PLAN</span>
           </button>
         </li>
-        <li>
-          <button type="button">
-            <span>3</span>
-            <span>STEP 3</span>
-            <span>ADD-ONS</span>
+        <li className="bar-item">
+          <button type="button" className="bar-item__button">
+            <span className="bar-item__step-number">3</span>
+            <span className="bar-item__step-title">STEP 3</span>
+            <span className="bar-item__step-subtitle">ADD-ONS</span>
           </button>
         </li>
-        <li>
-          <button type="button">
-            <span>4</span>
-            <span>STEP 4</span>
-            <span>SUMMARY</span>
+        <li className="bar-item">
+          <button type="button" className="bar-item__button">
+            <span className="bar-item__step-number">4</span>
+            <span className="bar-item__step-title">STEP 4</span>
+            <span className="bar-item__step-subtitle">SUMMARY</span>
           </button>
         </li>
       </ul>

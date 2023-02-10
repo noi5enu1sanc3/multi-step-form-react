@@ -1,7 +1,63 @@
-.steps-bar-container {
-  border-radius: 10px;
+@import '../sassStyles/variables';
+@import '../sassStyles/mixins';
+
+$sb: ".steps-bar";
+
+#{$sb}-container {
+  border-radius: $radius-small;
   background-image: url('../../assets/images/bg-sidebar-desktop.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  padding: 30px;
+  min-width: 25%;
+}
+
+#{$sb}-list {
+  @include flex-column;
+  gap: 30px;
+}
+
+$bi: ".bar-item";
+
+#{$bi} {
+  &__button {
+    @include reset-button;
+    color: $alabaster;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 15px;
+    cursor: pointer;
+    text-align: start;
+  }
+
+  &__step-number {
+    $size: 30px;
+    display: flex;
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    border: 1px solid $alabaster;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+
+    &_active {
+      background-color: $alabaster;
+      color: $marine-blue;
+    }
+  }
+
+  &__step-title {
+    color: $light-gray;
+    grid-column: 2;
+    font-size: 11px;
+  }
+
+  &__step-subtitle {
+    grid-column: 2;
+    font-size: 14px;
+    font-weight: 500;
+  }
 }

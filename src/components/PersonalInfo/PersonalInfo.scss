@@ -1,0 +1,65 @@
+@import '../sassStyles/mixins';
+@import '../sassStyles/variables';
+
+$pi: ".personal-info";
+
+#{$pi} {
+  @include flex-column;
+
+  &__title {
+    @include form-title;
+  }
+
+  &__subtitle {
+    @include form-subtitle;
+  }
+}
+
+#{$pi}-form {
+  @include flex-column;
+}
+
+#{$pi}-label {
+  display: grid;
+  grid-template-columns: 2;
+  row-gap: 7px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#{$pi}-input {
+  border: 1px solid $light-gray;
+  border-radius: $radius-small;
+  padding: 10px;
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  color: $marine-blue;
+
+  &:focus-visible {
+    border: 2px solid $purplish-blue;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $cool-gray;
+    font-weight: 500;
+  }
+
+  &_state_error {
+    border: 2px solid $strawberry-red;
+  }
+}
+
+#{$pi}-label-text {
+  color: $marine-blue;
+  font-size: 12px;
+}
+
+#{$pi}-error-text {
+  text-align: end;
+  color: $strawberry-red;
+  font-size: 12px;
+}

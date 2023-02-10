@@ -1,0 +1,152 @@
+@import '../sassStyles/mixins';
+
+$bi: '.billing';
+$opt: 'options';
+
+#{$bi}__title {
+  @include form-title;
+}
+
+#{$bi}__subtitle {
+  @include form-subtitle;
+}
+
+#{$bi}-#{$opt}-buttons-container {
+  display: flex;
+  border: none;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+#{$bi}-#{$opt}-label {
+  width: calc((100% - 30px) / 3);
+}
+
+input[type='radio'] {
+  @include hide-default-input;
+}
+
+#{$bi}-#{$opt}-pseudo-button {
+  @include flex-column;
+  border-radius: $radius-small;
+  border: 1px solid $cool-gray;
+  padding: 15px 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $purplish-blue;
+  }
+}
+
+#{$bi}-#{$opt}-pseudo-button:hover > #{$bi}-#{$opt}-icon {
+  transform: scale(1.1);
+}
+
+input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
+  background-color: $alabaster;
+  border-color: $purplish-blue;
+}
+
+#{$bi}-#{$opt}-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  $size: 40px;
+  width: $size;
+  height: $size;
+  margin-bottom: $size;
+  transition: all $transition-primary;
+
+  &_type_arcade {
+    background-image: url('../../assets/images/icon-arcade.svg');
+  }
+
+  &_type_advanced {
+    background-image: url('../../assets/images/icon-advanced.svg');
+  }
+
+  &_type_pro {
+    background-image: url('../../assets/images/icon-pro.svg');
+  }
+}
+
+#{$bi}-#{$opt}-title {
+  color: $marine-blue;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#{$bi}-#{$opt}-subtitle {
+  color: $cool-gray;
+  font-size: 14px;
+}
+
+#{$bi}-#{$opt}-period-container {
+  background-color: $alabaster;
+  border-radius: $radius-small;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#{$bi}-#{$opt}-period-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+#{$bi}-#{$opt}-period-label {
+  // display: inline-block;
+  width: 40px;
+  height: 20px;
+  position: relative;
+  margin: 0 30px;
+}
+
+#{$bi}-#{$opt}-period-slider {
+  position: absolute;
+  box-shadow: none;
+  border-radius: 20px;
+  background-color: $marine-blue;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  cursor: pointer;
+  transition: opacity $transition-primary;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $white;
+    border: 1px solid $marine-blue;
+    position: absolute;
+    bottom: 1px;
+    left: 2px;
+    transition: all $transition-primary;
+  }
+}
+
+#{$bi}-#{$opt}-period-input_state_checked
+  + #{$bi}-#{$opt}-period-slider::before {
+  transform: translate(15px);
+}
+
+#{$bi}-#{$opt}-period-text {
+  color: $cool-gray;
+  font-size: 14px;
+  font-weight: 500;
+}

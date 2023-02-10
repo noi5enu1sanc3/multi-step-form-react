@@ -7,10 +7,10 @@ import './FormContainer.scss';
 
 function FormContainer() {
   return (
-    <section>
+    <div className="form-container">
       <Summary />
       <FormNav />
-    </section>
+    </div>
   );
 }
 
