@@ -12,15 +12,19 @@ $opt: 'options';
 }
 
 #{$bi}-#{$opt}-buttons-container {
-  display: flex;
   border: none;
-  gap: 15px;
   margin: 0;
   padding: 0;
   margin-bottom: 30px;
 }
 
-#{$bi}-#{$opt}-label {
+#{$bi}-#{$opt}-buttons-list {
+  display: flex;
+  gap: 15px;
+  min-width: 100%;
+}
+
+#{$bi}-#{$opt}-item {
   width: calc((100% - 30px) / 3);
 }
 
@@ -94,16 +98,8 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   align-items: center;
 }
 
-#{$bi}-#{$opt}-period-input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-}
-
 #{$bi}-#{$opt}-period-label {
-  // display: inline-block;
+  display: inline-block;
   width: 40px;
   height: 20px;
   position: relative;
@@ -142,7 +138,7 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
 
 #{$bi}-#{$opt}-period-input_state_checked
   + #{$bi}-#{$opt}-period-slider::before {
-  transform: translate(15px);
+  transform: translate(18px);
 }
 
 #{$bi}-#{$opt}-period-text {

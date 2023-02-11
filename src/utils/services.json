@@ -1,0 +1,39 @@
+{
+  "billingPlans": [
+    {
+      "id": 1,
+      "name": "Arcade",
+      "cost": 9
+    },
+    {
+      "id": 2,
+      "name": "Advanced",
+      "cost": 12
+    },
+    {
+      "id": 3,
+      "name": "Pro",
+      "cost": 15
+    }
+  ],
+  "addons": [
+    {
+      "id": 1,
+      "name": "Online service",
+      "description": "Access to multiplayer games",
+      "cost": 1
+    },
+    {
+      "id": 2,
+      "name": "Larger storage",
+      "description": "Extra 1TB of cloud space",
+      "cost": 2
+    },
+    {
+      "id": 3,
+      "name": "Customizable profile",
+      "description": "Custom theme for your profile",
+      "cost": 2
+    }
+  ]
+}

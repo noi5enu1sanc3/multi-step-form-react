@@ -1,6 +1,6 @@
 @import '../sassStyles/mixins';
 
-$fn: ".form-nav";
+$fn: '.form-nav';
 
 #{$fn} {
   margin-top: auto;
@@ -32,6 +32,16 @@ $fn: ".form-nav";
       &:hover {
         background-color: $purplish-blue;
         cursor: pointer;
+      }
+
+      &_state_disabled {
+        cursor: default;
+        background-color: $light-blue;
+
+        &:hover {
+          cursor: default;
+          background-color: $light-blue;
+        }
       }
     }
   }

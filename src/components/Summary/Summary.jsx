@@ -1,33 +1,61 @@
 import './Summary.scss';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 
-function Summary() {
+function Summary({ userData, setCurrentStep }) {
   return (
     <section className="summary">
       <h2 className="summary__title">Finishing up</h2>
       <p className="summary__subtitle">Double-check everything looks OK before confirming.</p>
       <div className="summary__result-container">
         <div className="summary__billing-wrapper">
-          <span className="summary__billing-plan">Billing plan (billing type)</span>
-          <button type="button" className="summary__change-button"><span className="summary__change-text">Change</span></button>
-          <span className="summary__plan-cost">$9/mo</span>
+          <span className="summary__billing-plan">{`${userData.plan} (${userData.billingOption})`}</span>
+          <button
+            type="button"
+            className="summary__change-button"
+            onClick={() => setCurrentStep(2)}
+          >
+            <span className="summary__change-text">Change</span>
+          </button>
+          <span className="summary__plan-cost">{`$${userData.planCost}/mo`}</span>
         </div>
         <ul className="summary__add-ons-list">
-          <li className="summary__add-ons-item">
-            <span className="summary__add-ons-title">Optional add-on</span>
-            <span className="summary__add-ons-cost">+$1/mo</span>
-          </li>
-          <li className="summary__add-ons-item">
-            <span className="summary__add-ons-title">Optional add-on</span>
-            <span className="summary__add-ons-cost">+$1/mo</span>
-          </li>
+          {
+            Array.from(userData.addOns).map((addon) => (
+              <li
+                className="summary__add-ons-item"
+                key={addon.id}
+              >
+                <span className="summary__add-ons-title">{addon.name}</span>
+                <span className="summary__add-ons-cost">{`+$${addon.cost}/mo`}</span>
+              </li>
+            ))
+          }
         </ul>
         <div className="summary__total-wrapper">
-          <span className="summary__total-text">Total (per month)</span>
-          <span className="summary__total-sum">$12/mo</span>
+          <span className="summary__total-text">{`Total (per ${userData.billingOption === 'Monthly' ? 'month' : 'year'})`}</span>
+          <span className="summary__total-sum">
+            {`$${userData.planCost + (
+              Array.from(userData.addOns).reduce((acc, cur) => acc + cur.cost, 0)
+            )}/mo`}
+          </span>
         </div>
       </div>
     </section>
   );
 }
+
+Summary.propTypes = {
+  userData: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    plan: PropTypes.string.isRequired,
+    billingOption: PropTypes.string.isRequired,
+    addOns: PropTypes.instanceOf(Set).isRequired,
+    planCost: PropTypes.number.isRequired,
+  }).isRequired,
+  setCurrentStep: PropTypes.func.isRequired,
+};
 
 export default Summary;
