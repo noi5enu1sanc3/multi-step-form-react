@@ -31,7 +31,8 @@ $pi: ".personal-info";
 }
 
 #{$pi}-input {
-  border: 1px solid $light-gray;
+  outline: 1px solid $light-gray;
+  border: none;
   border-radius: $radius-small;
   padding: 10px;
   grid-column: 1 / span 2;
@@ -39,8 +40,8 @@ $pi: ".personal-info";
   color: $marine-blue;
 
   &:focus-visible {
-    border: 2px solid $purplish-blue;
-    outline: none;
+    border: none;
+    outline: 2px solid $purplish-blue;
   }
 
   &::placeholder {
@@ -49,7 +50,8 @@ $pi: ".personal-info";
   }
 
   &_state_error {
-    border: 2px solid $strawberry-red;
+    border: none;
+    outline: 2px solid $strawberry-red;
   }
 }
 

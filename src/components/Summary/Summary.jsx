@@ -3,13 +3,51 @@ import './Summary.scss';
 import PropTypes from 'prop-types';
 
 function Summary({ userData, setCurrentStep }) {
+  const {
+    plan, planCost, billingOption, addOns,
+  } = userData;
+
+  const renderPlanCost = (option, cost) => (
+    <span
+      className="summary__plan-cost"
+    >
+      {option === 'Monthly' ? `$${cost}/mo` : `$${cost * 12}/y`}
+    </span>
+  );
+
+  const renderAddonCost = (option, cost) => (
+    <span
+      className="summary__add-ons-cost"
+    >
+      {option === 'Monthly' ? `+$${cost}/mo` : `+$${cost * 12}/y`}
+    </span>
+  );
+
+  const renderTotalText = (option) => (
+    <span
+      className="summary__total-text"
+    >
+      {`Total (per ${option === 'Monthly' ? 'month' : 'year'})`}
+    </span>
+  );
+
+  const renderTotalCost = (option, cost, addonsArray) => (
+    <span className="summary__total-sum">
+      {option === 'Monthly' ? `$${cost + (
+        addonsArray.reduce((acc, cur) => acc + cur.cost, 0)
+      )}/mo` : `$${cost * 12 + (
+        addonsArray.reduce((acc, cur) => acc + cur.cost * 12, 0)
+      )}/y`}
+    </span>
+  );
+
   return (
     <section className="summary">
       <h2 className="summary__title">Finishing up</h2>
       <p className="summary__subtitle">Double-check everything looks OK before confirming.</p>
       <div className="summary__result-container">
         <div className="summary__billing-wrapper">
-          <span className="summary__billing-plan">{`${userData.plan} (${userData.billingOption})`}</span>
+          <span className="summary__billing-plan">{`${plan} (${billingOption})`}</span>
           <button
             type="button"
             className="summary__change-button"
@@ -17,28 +55,24 @@ function Summary({ userData, setCurrentStep }) {
           >
             <span className="summary__change-text">Change</span>
           </button>
-          <span className="summary__plan-cost">{`$${userData.planCost}/mo`}</span>
+          {renderPlanCost(billingOption, planCost)}
         </div>
         <ul className="summary__add-ons-list">
           {
-            Array.from(userData.addOns).map((addon) => (
+            [...addOns].map((addon) => (
               <li
                 className="summary__add-ons-item"
                 key={addon.id}
               >
                 <span className="summary__add-ons-title">{addon.name}</span>
-                <span className="summary__add-ons-cost">{`+$${addon.cost}/mo`}</span>
+                {renderAddonCost(billingOption, addon.cost)}
               </li>
             ))
           }
         </ul>
         <div className="summary__total-wrapper">
-          <span className="summary__total-text">{`Total (per ${userData.billingOption === 'Monthly' ? 'month' : 'year'})`}</span>
-          <span className="summary__total-sum">
-            {`$${userData.planCost + (
-              Array.from(userData.addOns).reduce((acc, cur) => acc + cur.cost, 0)
-            )}/mo`}
-          </span>
+          {renderTotalText(billingOption)}
+          {renderTotalCost(billingOption, planCost, [...addOns])}
         </div>
       </div>
     </section>

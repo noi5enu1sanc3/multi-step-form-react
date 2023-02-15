@@ -5,6 +5,22 @@ import servicesData from '../../utils/services.json';
 import BillingOptionItem from './BillingOptionItem';
 
 function Billing({ userData, setUserData }) {
+  const { billingOption } = userData;
+
+  const handleBillingOptionChange = (evt) => {
+    if (!evt.target.checked) {
+      setUserData({
+        ...userData,
+        billingOption: 'Monthly',
+      });
+    } else {
+      setUserData({
+        ...userData,
+        billingOption: 'Yearly',
+      });
+    }
+  };
+
   return (
     <section className="billing">
       <h2 className="billing__title">Select your plan</h2>
@@ -31,21 +47,9 @@ function Billing({ userData, setUserData }) {
             <input
               type="checkbox"
               id="billing-option"
-              className={`billing-options-period-input ${userData.billingOption === 'Yearly' ? 'billing-options-period-input_state_checked' : ''}`}
-              checked={userData.billingOption === 'Yearly'}
-              onChange={(evt) => {
-                if (!evt.target.checked) {
-                  setUserData({
-                    ...userData,
-                    billingOption: 'Montly',
-                  });
-                } else {
-                  setUserData({
-                    ...userData,
-                    billingOption: 'Yearly',
-                  });
-                }
-              }}
+              className={`billing-options-period-input ${billingOption === 'Yearly' ? 'billing-options-period-input_state_checked' : ''}`}
+              checked={billingOption === 'Yearly'}
+              onChange={handleBillingOptionChange}
             />
             <div className="billing-options-period-slider" />
           </label>

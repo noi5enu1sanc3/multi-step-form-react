@@ -1,7 +1,7 @@
 @import '../sassStyles/variables';
 @import '../sassStyles/mixins';
 
-$sb: ".steps-bar";
+$sb: '.steps-bar';
 
 #{$sb}-container {
   border-radius: $radius-small;
@@ -10,7 +10,7 @@ $sb: ".steps-bar";
   background-position: center;
   background-size: cover;
   padding: 30px;
-  min-width: 25%;
+  min-width: 20%;
 }
 
 #{$sb}-list {
@@ -18,7 +18,7 @@ $sb: ".steps-bar";
   gap: 30px;
 }
 
-$bi: ".bar-item";
+$bi: '.bar-item';
 
 #{$bi} {
   &__button {
@@ -27,7 +27,6 @@ $bi: ".bar-item";
     display: grid;
     grid-template-columns: repeat(2, auto);
     column-gap: 15px;
-    cursor: pointer;
     text-align: start;
   }
 
@@ -42,9 +41,11 @@ $bi: ".bar-item";
     align-items: center;
     grid-column: 1;
     grid-row: 1 / span 2;
+    transition: all $transition-primary;
 
     &_active {
-      background-color: $alabaster;
+      background-color: $light-blue;
+      border-color: $light-blue;
       color: $marine-blue;
     }
   }

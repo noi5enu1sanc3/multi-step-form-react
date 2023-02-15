@@ -4,6 +4,7 @@ $fn: '.form-nav';
 
 #{$fn} {
   margin-top: auto;
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
 
@@ -20,6 +21,10 @@ $fn: '.form-nav';
       &:hover {
         color: $marine-blue;
         cursor: pointer;
+      }
+
+      &_hidden {
+        visibility: hidden;
       }
     }
 

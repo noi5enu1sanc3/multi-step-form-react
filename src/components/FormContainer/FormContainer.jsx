@@ -1,4 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 import './FormContainer.scss';
 import AddOns from '../AddOns/AddOns';
 import Summary from '../Summary/Summary';
@@ -7,38 +9,34 @@ import PersonalInfo from '../PersonalInfo/PersonalInfo';
 import FormNav from '../FormNav/FormNav';
 // import useFormAndValidation from '../../hooks/useFormAndValidation';
 
-function FormContainer() {
-  const [currentStep, setCurrentStep] = React.useState(1);
-  const [userData, setUserData] = React.useState({
-    name: '',
+function FormContainer({ currentStep, setCurrentStep }) {
+  const [userData, setUserData] = useState({
+    userName: '',
     email: '',
     phone: '',
-    plan: 'arcade',
+    plan: 'Arcade',
     billingOption: 'Monthly',
     addOns: new Set(),
-    planCost: 0,
+    planCost: 9,
   });
 
-  // const addData = (data) => {
-  //   setUserData({
-  //     ...userData,
-  //     data,
-  //   });
-  //   console.log(userData);
-  // };
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
 
-  // const {
-  //   values, handleChange, errors, isValid,
-  // } = useFormAndValidation();
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setUserData({ ...userData, [name]: value });
+    setErrors({ ...errors, [name]: evt.target.validationMessage });
+    setIsValid(evt.target.closest('.js-form').checkValidity());
+  };
 
   const renderCurrentComponent = (step) => {
     switch (step) {
       case 1:
         return (
           <PersonalInfo
-            // values={values}
-            // errors={errors}
-            // handleChange={handleChange}
+            handleChange={handleChange}
+            errors={errors}
             setUserData={setUserData}
             userData={userData}
           />
@@ -69,21 +67,21 @@ function FormContainer() {
     }
   };
 
-  const goNext = () => { setCurrentStep(currentStep + 1); };
-  const goBack = () => setCurrentStep(currentStep - 1);
-
   return (
     <div className="form-container">
       {renderCurrentComponent(currentStep)}
       <FormNav
-        onNext={goNext}
-        onBack={goBack}
-        // isNextButtonActive={currentStep === 1 ? isValid : true}
-        step={currentStep}
-        // userInfo={values}
+        isNextButtonActive={currentStep === 1 ? isValid : true}
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
       />
     </div>
   );
 }
+
+FormContainer.propTypes = {
+  currentStep: PropTypes.number.isRequired,
+  setCurrentStep: PropTypes.func.isRequired,
+};
 
 export default FormContainer;

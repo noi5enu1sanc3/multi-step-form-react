@@ -4,6 +4,18 @@ import PropTypes from 'prop-types';
 function BillingOptionItem({
   name, cost, userData, setUserData,
 }) {
+  const { plan } = userData;
+
+  const handlePlanChange = (evt) => {
+    if (evt.target.checked) {
+      setUserData({
+        ...userData,
+        plan: evt.target.value,
+        planCost: cost,
+      });
+    }
+  };
+
   return (
     <li className="billing-options-item">
       <label htmlFor={name} className="billing-options-label">
@@ -12,16 +24,8 @@ function BillingOptionItem({
           id={name}
           value={name}
           name="billing-plan"
-          checked={userData.plan === name}
-          onChange={(evt) => {
-            if (evt.target.checked) {
-              setUserData({
-                ...userData,
-                plan: evt.target.value,
-                planCost: cost,
-              });
-            }
-          }}
+          checked={plan === name}
+          onChange={handlePlanChange}
         />
         <div className="billing-options-pseudo-button">
           <div className="billing-options-icon billing-options-icon_type_arcade" />

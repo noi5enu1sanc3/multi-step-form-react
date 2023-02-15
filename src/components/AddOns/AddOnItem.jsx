@@ -4,32 +4,39 @@ import PropTypes from 'prop-types';
 function AddOnItem({
   addon, userData, setUserData,
 }) {
+  const { addOns } = userData;
+
+  const getAddonId = (str) => str.replace(/\s+/g, '-').toLowerCase();
+  const id = getAddonId(addon.name);
+
+  const handleToggleAddOn = (evt) => {
+    if (!evt.target.checked) {
+      const updatedSet = userData.addOns;
+      updatedSet.delete(addon);
+      setUserData({
+        ...userData,
+        addOns: new Set(updatedSet),
+      });
+    } else {
+      setUserData({
+        ...userData,
+        addOns: new Set(userData.addOns.add(addon)),
+      });
+    }
+  };
+
   return (
-    <li>
-      <label htmlFor={`${addon.name.replace(/\s+/g, '-')}`} className="add-ons-form__option">
+    <li className="add-ons-form__option">
+      <label htmlFor={id}>
         <input
           type="checkbox"
-          id={`${addon.name.replace(/\s+/g, '-')}`}
+          id={id}
           className="add-ons-form__checkbox"
-          checked={userData.addOns.has(addon)}
-          onChange={(evt) => {
-            if (!evt.target.checked) {
-              const updatedSet = userData.addOns;
-              updatedSet.delete(addon);
-              setUserData({
-                ...userData,
-                addOns: new Set(updatedSet),
-              });
-            } else {
-              setUserData({
-                ...userData,
-                addOns: new Set(userData.addOns.add(addon)),
-              });
-            }
-          }}
+          checked={addOns.has(addon)}
+          onChange={handleToggleAddOn}
         />
         <div className="add-ons-form__pseudo-button">
-          <span className={`add-ons-form__pseudo-checkbox ${userData.addOns.has(addon) ? 'add-ons-form__pseudo-checkbox_state_checked' : ''}`} />
+          <span className={`add-ons-form__pseudo-checkbox ${addOns.has(addon) ? 'add-ons-form__pseudo-checkbox_state_checked' : ''}`} />
           <span className="add-ons-form__name">{addon.name}</span>
           <span className="add-ons-form__subname">{addon.description}</span>
           <span className="add-ons-form__cost">{`+$${addon.cost}/mo`}</span>
