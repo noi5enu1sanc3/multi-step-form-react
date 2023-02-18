@@ -22,8 +22,8 @@ $pi: ".personal-info";
 #{$pi}-label {
   display: grid;
   grid-template-columns: 2;
-  row-gap: 7px;
-  margin-bottom: 20px;
+  row-gap: $space-xs;
+  margin-bottom: $space-md;
 
   &:last-child {
     margin-bottom: 0;
@@ -34,7 +34,7 @@ $pi: ".personal-info";
   outline: 1px solid $light-gray;
   border: none;
   border-radius: $radius-small;
-  padding: 10px;
+  padding: $space-xs;
   grid-column: 1 / span 2;
   grid-row: 2;
   color: $marine-blue;
@@ -57,11 +57,11 @@ $pi: ".personal-info";
 
 #{$pi}-label-text {
   color: $marine-blue;
-  font-size: 12px;
+  font-size: $fs-sm;
 }
 
 #{$pi}-error-text {
   text-align: end;
   color: $strawberry-red;
-  font-size: 12px;
+  font-size: $fs-sm;
 }

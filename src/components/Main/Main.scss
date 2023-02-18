@@ -4,7 +4,7 @@
   min-height: 70vh;
   min-width: 60vw;
   display: flex;
-  padding: 10px 0 10px 10px;
-  border-radius: 20px;
+  padding: $space-sm 0 $space-sm $space-sm;
+  border-radius: $radius-large;
   background-color: $white;
 }

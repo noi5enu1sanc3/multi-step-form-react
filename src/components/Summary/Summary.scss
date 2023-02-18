@@ -16,11 +16,11 @@ $sum: ".summary";
     border-top-left-radius: $radius-small;
     border-top-right-radius: $radius-small;
     background-color: $alabaster;
-    padding: 25px;
+    padding: $space-md;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 10px;
+    row-gap: $space-xs;
   }
 
   &__billing-plan {
@@ -28,7 +28,7 @@ $sum: ".summary";
     grid-row: 1;
     justify-self: start;
     color: $marine-blue;
-    font-size: 16px;
+    font-size: $fs-primary;
     font-weight: 500;
   }
 
@@ -42,7 +42,7 @@ $sum: ".summary";
 
   &__change-text {
     color: $cool-gray;
-    font-size: 14px;
+    font-size: $fs-primary-sm;
     font-weight: 500;
     text-decoration: underline $cool-gray;
     transition: all $transition-primary;
@@ -59,7 +59,7 @@ $sum: ".summary";
     align-self: center;
     justify-self: end;
     color: $marine-blue;
-    font-size: 16px;
+    font-size: $fs-primary;
     font-weight: 500;
   }
 
@@ -67,11 +67,11 @@ $sum: ".summary";
     border-bottom-left-radius: $radius-small;
     border-bottom-right-radius: $radius-small;
     background-color: $alabaster;
-    padding: 0 25px 25px;
+    padding: 0 $space-md $space-md;
   }
 
   &__add-ons-item {
-    padding-top: 25px;
+    padding-top: $space-md;
     display: flex;
     justify-content: space-between;
   }
@@ -82,28 +82,28 @@ $sum: ".summary";
 
   &__add-ons-title {
     color: $cool-gray;
-    font-size: 14px;
+    font-size: $fs-primary-sm;
   }
 
   &__add-ons-cost {
     color: $marine-blue;
-    font-size: 14px;
+    font-size: $fs-primary-sm;
   }
 
   &__total-wrapper {
-    padding: 25px 25px 0;
+    padding: $space-md $space-md 0;
     display: flex;
     justify-content: space-between;
   }
 
   &__total-text {
     color: $cool-gray;
-    font-size: 16px;
+    font-size: $fs-primary;
   }
 
   &__total-sum {
     color: $purplish-blue;
-    font-size: 18px;
+    font-size: $fs-primary-lg;
     font-weight: 500;
   }
 }

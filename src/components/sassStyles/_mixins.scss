@@ -16,14 +16,14 @@
 }
 
 @mixin form-title {
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: $fs-title-lg;
+  margin-bottom: $space-sm;
   color: $marine-blue;
 }
 
 @mixin form-subtitle {
-  font-size: 14px;
-  margin-bottom: 24px;
+  font-size: $fs-primary;
+  margin-bottom: $space-lg;
   color: $cool-gray;
 }
 

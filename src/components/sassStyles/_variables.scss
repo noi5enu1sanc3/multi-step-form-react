@@ -18,8 +18,35 @@ $white: hsl(0, 0%, 100%);
 
 // ---Border
 
+$radius-xxs: 3px;
 $radius-small: 10px;
+$radius-large: 20px;
 
 // ---Transitiom
 
-$transition-primary: .4s ease-in-out;
+$transition-primary: 0.4s ease-in-out;
+$transition-short: 0.2s ease-in;
+
+// ---Spacings
+
+$space-base: 1rem;
+
+$space-xxxxs: calc(0.125 * $space-base);
+$space-xxxs: calc(0.25 * $space-base);
+$space-xxs: calc(0.375 * $space-base);
+$space-xs: calc(0.5 * $space-base);
+$space-sm: calc(0.75 * $space-base);
+$space-md: calc(1.25 * $space-base);
+$space-lg: calc(2 * $space-base);
+$space-xl: calc(3.25 * $space-base);
+$space-xxl: calc(5.25 * $space-base);
+$space-xxxl: calc(8.5 * $space-base);
+$space-xxxxl: calc(13.75 * $space-base);
+
+// ---Font sizing
+
+$fs-primary: 16px;
+$fs-primary-lg: 18px;
+$fs-primary-sm: 14px;
+$fs-sm: 12px;
+$fs-title-lg: 32px;

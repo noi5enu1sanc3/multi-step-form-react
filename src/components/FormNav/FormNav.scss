@@ -4,14 +4,14 @@ $fn: '.form-nav';
 
 #{$fn} {
   margin-top: auto;
-  padding-top: 50px;
+  padding-top: $space-xl;
   display: flex;
   justify-content: space-between;
 
   &__button {
     @include reset-button;
 
-    font-size: 14px;
+    font-size: $fs-primary-sm;
     font-weight: 500;
     transition: all $transition-primary;
 
@@ -30,7 +30,7 @@ $fn: '.form-nav';
 
     &_direction_next {
       border-radius: $radius-small;
-      padding: 15px 20px;
+      padding: $space-sm $space-md;
       background-color: $marine-blue;
       color: $magnolia;
 

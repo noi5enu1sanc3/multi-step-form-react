@@ -15,12 +15,12 @@ $opt: 'options';
   border: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: $space-lg;
 }
 
 #{$bi}-#{$opt}-buttons-list {
   display: flex;
-  gap: 15px;
+  gap: $space-md;
   min-width: 100%;
 }
 
@@ -36,7 +36,7 @@ input[type='radio'] {
   @include flex-column;
   border-radius: $radius-small;
   border: 1px solid $cool-gray;
-  padding: 15px 10px;
+  padding: $space-sm $space-xs;
   cursor: pointer;
 
   &:hover {
@@ -79,20 +79,20 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
 
 #{$bi}-#{$opt}-title {
   color: $marine-blue;
-  font-size: 16px;
+  font-size: $fs-primary;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: $space-xxs;
 }
 
 #{$bi}-#{$opt}-subtitle {
   color: $cool-gray;
-  font-size: 14px;
+  font-size: $fs-primary-sm;
 }
 
 #{$bi}-#{$opt}-period-container {
   background-color: $alabaster;
   border-radius: $radius-small;
-  padding: 20px 0;
+  padding: $space-md 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,13 +103,13 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   width: 40px;
   height: 20px;
   position: relative;
-  margin: 0 30px;
+  margin: 0 $space-lg;
 }
 
 #{$bi}-#{$opt}-period-slider {
   position: absolute;
   box-shadow: none;
-  border-radius: 20px;
+  border-radius: $radius-large;
   background-color: $marine-blue;
   top: 0;
   bottom: 0;
@@ -143,6 +143,6 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
 
 #{$bi}-#{$opt}-period-text {
   color: $cool-gray;
-  font-size: 14px;
+  font-size: $fs-primary;
   font-weight: 500;
 }

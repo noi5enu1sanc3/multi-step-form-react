@@ -9,13 +9,13 @@ $sb: '.steps-bar';
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 30px;
+  padding: $space-lg;
   min-width: 20%;
 }
 
 #{$sb}-list {
   @include flex-column;
-  gap: 30px;
+  gap: $space-lg;
 }
 
 $bi: '.bar-item';
@@ -26,7 +26,7 @@ $bi: '.bar-item';
     color: $alabaster;
     display: grid;
     grid-template-columns: repeat(2, auto);
-    column-gap: 15px;
+    column-gap: $space-md;
     text-align: start;
   }
 
@@ -41,7 +41,7 @@ $bi: '.bar-item';
     align-items: center;
     grid-column: 1;
     grid-row: 1 / span 2;
-    transition: all $transition-primary;
+    transition: all $transition-short;
 
     &_active {
       background-color: $light-blue;
@@ -53,12 +53,12 @@ $bi: '.bar-item';
   &__step-title {
     color: $light-gray;
     grid-column: 2;
-    font-size: 11px;
+    font-size: $fs-sm;
   }
 
   &__step-subtitle {
     grid-column: 2;
-    font-size: 14px;
+    font-size: $fs-primary;
     font-weight: 500;
   }
 }

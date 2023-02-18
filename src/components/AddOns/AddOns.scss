@@ -22,7 +22,7 @@ input[type="checkbox"] {
     @include flex-column;
 
     &__option {
-      margin-bottom: 15px;
+      margin-bottom: $space-sm;
 
       &:last-child {
         margin-bottom: 0;
@@ -32,11 +32,11 @@ input[type="checkbox"] {
     &__pseudo-button {
       border-radius: $radius-small;
       border: 1px solid $cool-gray;
-      padding: 20px;
+      padding: $space-md;
       display: grid;
       grid-template-columns: min-content auto auto;
       grid-template-rows: repeat(2, 1fr);
-      row-gap: 5px;
+      row-gap: $space-xxs;
       cursor: pointer;
 
       &:hover {
@@ -53,8 +53,8 @@ input[type="checkbox"] {
       $size: 20px;
       width: $size;
       height: $size;
-      border-radius: 3px;
-      margin-right: 15px;
+      border-radius: $radius-xxs;
+      margin-right: $space-md;
       border: 1px solid $cool-gray;
 
       &_state_checked {
@@ -70,14 +70,14 @@ input[type="checkbox"] {
       grid-row: 1;
       color: $marine-blue;
       font-weight: 500;
-      font-size: 14px;
+      font-size: $fs-primary;
     }
 
     &__subtitle {
       grid-column: 2;
       grid-row: 2;
       color: $cool-gray;
-      font-size: 12px;
+      font-size: $fs-primary-sm;
     }
 
     &__cost {
@@ -86,7 +86,7 @@ input[type="checkbox"] {
       justify-self: end;
       align-self: center;
       color: $purplish-blue;
-      font-size: 12px;
+      font-size: $fs-sm;
       font-weight: 500;
     }
 }
