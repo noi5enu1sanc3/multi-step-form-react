@@ -37,8 +37,8 @@ function AddOnItem({
         />
         <div className="add-ons-form__pseudo-button">
           <span className={`add-ons-form__pseudo-checkbox ${addOns.has(addon) ? 'add-ons-form__pseudo-checkbox_state_checked' : ''}`} />
-          <span className="add-ons-form__name">{addon.name}</span>
-          <span className="add-ons-form__subname">{addon.description}</span>
+          <span className="add-ons-form__title">{addon.name}</span>
+          <span className="add-ons-form__subtitle">{addon.description}</span>
           <span className="add-ons-form__cost">{`+$${addon.cost}/mo`}</span>
         </div>
       </label>
@@ -53,7 +53,7 @@ AddOnItem.propTypes = {
     cost: PropTypes.number.isRequired,
   }).isRequired,
   userData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,

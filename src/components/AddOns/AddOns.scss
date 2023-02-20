@@ -39,6 +39,11 @@ input[type="checkbox"] {
       row-gap: $space-xxs;
       cursor: pointer;
 
+      @include for-size(phone-only) {
+        padding: $space-sm;
+        grid-template-rows: repeat(2, minmax(min-content, max-content));
+      }
+
       &:hover {
         border-color: $purplish-blue;
       }
@@ -57,6 +62,10 @@ input[type="checkbox"] {
       margin-right: $space-md;
       border: 1px solid $cool-gray;
 
+      @include for-size(phone-only) {
+        margin-right: $space-sm;
+      }
+
       &_state_checked {
         background-color: $purplish-blue;
         background-image: url("../../assets/images/icon-checkmark.svg");
@@ -71,6 +80,11 @@ input[type="checkbox"] {
       color: $marine-blue;
       font-weight: 500;
       font-size: $fs-primary;
+
+      @include for-size(phone-only) {
+        align-self: end;
+        font-size: $fs-primary-sm;
+      }
     }
 
     &__subtitle {
@@ -78,6 +92,10 @@ input[type="checkbox"] {
       grid-row: 2;
       color: $cool-gray;
       font-size: $fs-primary-sm;
+
+      @include for-size(phone-only) {
+        font-size: $fs-sm;
+      }
     }
 
     &__cost {

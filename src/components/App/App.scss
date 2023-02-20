@@ -1,6 +1,12 @@
+@import '../sassStyles/mixins';
+
 .App {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include for-size(phone-only) {
+    align-items: normal;
+  }
 }

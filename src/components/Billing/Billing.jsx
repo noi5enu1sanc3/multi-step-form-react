@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Billing.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
@@ -7,8 +8,11 @@ import BillingOptionItem from './BillingOptionItem';
 function Billing({ userData, setUserData }) {
   const { billingOption } = userData;
 
-  const handleBillingOptionChange = (evt) => {
-    if (!evt.target.checked) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleBillingOptionChange = () => {
+    setIsChecked((prev) => !prev);
+    if (userData.billingOption === 'Yearly') {
       setUserData({
         ...userData,
         billingOption: 'Monthly',
@@ -22,7 +26,7 @@ function Billing({ userData, setUserData }) {
   };
 
   return (
-    <section className="billing">
+    <section className="billing section-default">
       <h2 className="billing__title">Select your plan</h2>
       <p className="billing__subtitle">You have the option of monthly or yearly billing.</p>
       <form className="billing-form">
@@ -34,6 +38,7 @@ function Billing({ userData, setUserData }) {
                   key={data.id}
                   name={data.name}
                   cost={data.cost}
+                  optionType={data.name}
                   userData={userData}
                   setUserData={setUserData}
                 />
@@ -42,18 +47,44 @@ function Billing({ userData, setUserData }) {
           </ul>
         </fieldset>
         <div className="billing-options-period-container">
-          <span className="billing-options-period-text">Monthly</span>
+          <button
+            type="button"
+            disabled={isChecked}
+            className={
+              `billing-options-period-text
+              ${billingOption === 'Monthly'
+                ? 'billing-options-period-text_selected'
+                : ''}`
+          }
+            onClick={handleBillingOptionChange}
+          >
+            Monthly
+          </button>
           <label htmlFor="billing-option" className="billing-options-period-label">
             <input
               type="checkbox"
               id="billing-option"
               className={`billing-options-period-input ${billingOption === 'Yearly' ? 'billing-options-period-input_state_checked' : ''}`}
-              checked={billingOption === 'Yearly'}
+              checked={isChecked}
               onChange={handleBillingOptionChange}
             />
             <div className="billing-options-period-slider" />
           </label>
-          <span className="billing-options-period-text">Yearly</span>
+          <button
+            type="button"
+            disabled={!isChecked}
+            onClick={handleBillingOptionChange}
+            className={
+              `billing-options-period-text
+              ${
+                billingOption === 'Yearly'
+                  ? 'billing-options-period-text_selected'
+                  : ''
+              }`
+          }
+          >
+            Yearly
+          </button>
         </div>
       </form>
     </section>
@@ -62,7 +93,7 @@ function Billing({ userData, setUserData }) {
 
 Billing.propTypes = {
   userData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,

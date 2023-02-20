@@ -16,16 +16,29 @@ $opt: 'options';
   margin: 0;
   padding: 0;
   margin-bottom: $space-lg;
+
+  @include for-size(phone-only) {
+    margin-bottom: $space-md;
+  }
 }
 
 #{$bi}-#{$opt}-buttons-list {
   display: flex;
   gap: $space-md;
   min-width: 100%;
+
+  @include for-size(phone-only) {
+    @include flex-column;
+    gap: $space-sm;
+  }
 }
 
 #{$bi}-#{$opt}-item {
   width: calc((100% - 30px) / 3);
+
+  @include for-size(phone-only) {
+    width: 100%
+  }
 }
 
 input[type='radio'] {
@@ -38,6 +51,10 @@ input[type='radio'] {
   border: 1px solid $cool-gray;
   padding: $space-sm $space-xs;
   cursor: pointer;
+
+  @include for-size(phone-only) {
+    flex-direction: row;
+  }
 
   &:hover {
     border-color: $purplish-blue;
@@ -64,6 +81,11 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   margin-bottom: $size;
   transition: all $transition-primary;
 
+  @include for-size(phone-only) {
+    margin-bottom: 0;
+    margin-right: $space-md;
+  }
+
   &_type_arcade {
     background-image: url('../../assets/images/icon-arcade.svg');
   }
@@ -77,11 +99,19 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   }
 }
 
+#{$bi}-#{$opt}-text-container {
+  @include flex-column;
+}
+
 #{$bi}-#{$opt}-title {
   color: $marine-blue;
   font-size: $fs-primary;
   font-weight: 500;
   margin-bottom: $space-xxs;
+
+  @include for-size(phone-only) {
+    margin-bottom: $space-xxxs;
+  }
 }
 
 #{$bi}-#{$opt}-subtitle {
@@ -142,7 +172,14 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
 }
 
 #{$bi}-#{$opt}-period-text {
+  @include reset-button;
   color: $cool-gray;
   font-size: $fs-primary;
   font-weight: 500;
+  cursor: pointer;
+
+  &_selected {
+    color: $marine-blue;
+    cursor: default;
+  }
 }

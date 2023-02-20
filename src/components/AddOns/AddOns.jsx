@@ -6,7 +6,7 @@ import AddOnItem from './AddOnItem';
 
 function AddOns({ userData, setUserData }) {
   return (
-    <section className="add-ons">
+    <section className="add-ons section-default">
       <h2 className="add-ons__title">Pick add-ons</h2>
       <p className="add-ons__subtitle">Add-ons help enhance your gaming experience.</p>
       <form className="add-ons-form">
@@ -29,7 +29,7 @@ function AddOns({ userData, setUserData }) {
 
 AddOns.propTypes = {
   userData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,

@@ -11,11 +11,27 @@ $sb: '.steps-bar';
   background-size: cover;
   padding: $space-lg;
   min-width: 20%;
+
+  @include for-size(phone-only) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: $space-xl 0 $space-xxl;
+    background-position: center bottom 15%;
+    background-size: cover;
+    border-radius: 0;
+  }
 }
 
 #{$sb}-list {
   @include flex-column;
   gap: $space-lg;
+
+  @include for-size(phone-only) {
+    flex-direction: row;
+    gap: $space-sm;
+    max-width: fit-content;
+  }
 }
 
 $bi: '.bar-item';
@@ -28,6 +44,10 @@ $bi: '.bar-item';
     grid-template-columns: repeat(2, auto);
     column-gap: $space-md;
     text-align: start;
+
+    @include for-size(phone-only) {
+      column-gap: 0;
+    }
   }
 
   &__step-number {
@@ -54,11 +74,23 @@ $bi: '.bar-item';
     color: $light-gray;
     grid-column: 2;
     font-size: $fs-sm;
+
+    @include for-size(phone-only) {
+      display: none;
+    }
   }
 
   &__step-subtitle {
     grid-column: 2;
     font-size: $fs-primary;
     font-weight: 500;
+
+    @include for-size(tablet) {
+      font-size: $fs-primary-sm;
+    }
+
+    @include for-size(phone-only) {
+      display: none;
+    }
   }
 }

@@ -1,5 +1,15 @@
 @import './variables';
 
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media (max-width: 700px) { @content; }
+  } @else if $size == tablet {
+    @media (max-width: 900px) { @content; }
+  } @else if $size == desktop-up {
+    @media (max-width: 1200px) { @content; }
+  }
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -19,12 +29,21 @@
   font-size: $fs-title-lg;
   margin-bottom: $space-sm;
   color: $marine-blue;
+
+  @include for-size(phone-only) {
+    font-size: $fs-primary-lg;
+  }
 }
 
 @mixin form-subtitle {
   font-size: $fs-primary;
   margin-bottom: $space-lg;
   color: $cool-gray;
+
+  @include for-size(phone-only) {
+    font-size: $fs-primary-sm;
+    margin-bottom: $space-md;
+  }
 }
 
 @mixin hide-default-input {

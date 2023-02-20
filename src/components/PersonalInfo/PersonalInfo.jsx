@@ -6,7 +6,7 @@ function PersonalInfo({ userData, handleChange, errors }) {
   const { userName, email, phone } = userData;
 
   return (
-    <section className="personal-info">
+    <section className="personal-info section-default">
       <h2 className="personal-info__title">Personal Info</h2>
       <p className="personal-info__subtitle">
         Please provide your name, e-mail address, and phone number.
@@ -23,8 +23,6 @@ function PersonalInfo({ userData, handleChange, errors }) {
             placeholder="e.g. Stephen King"
             value={userName || ''}
             onChange={handleChange}
-            minLength="3"
-            maxLength="30"
             required
           />
         </label>

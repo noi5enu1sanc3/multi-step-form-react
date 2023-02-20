@@ -4,4 +4,14 @@
   @include flex-column;
   padding: 50px 100px 30px;
   flex-grow: 1;
+
+  @include for-size(tablet) {
+    padding: $space-lg $space-xl $space-md;
+  }
+
+  @include for-size(phone-only) {
+    padding: $space-md $space-md 0;
+    margin-top: calc($space-xl * -1);
+    width: 100%;
+  }
 }

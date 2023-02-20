@@ -42,7 +42,7 @@ function Summary({ userData, setCurrentStep }) {
   );
 
   return (
-    <section className="summary">
+    <section className="summary section-default">
       <h2 className="summary__title">Finishing up</h2>
       <p className="summary__subtitle">Double-check everything looks OK before confirming.</p>
       <div className="summary__result-container">
@@ -81,7 +81,7 @@ function Summary({ userData, setCurrentStep }) {
 
 Summary.propTypes = {
   userData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,

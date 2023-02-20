@@ -11,6 +11,7 @@
 body {
   font-family: 'Ubuntu';
   background-color: $magnolia;
+  margin: 0;
 }
 
 span,
@@ -28,4 +29,14 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.section-default {
+  @include for-size(phone-only) {
+    background-color: $white;
+    width: 80%;
+    border-radius: $radius-small;
+    margin: 0 auto;
+    padding: $space-lg $space-md;
+  }
 }

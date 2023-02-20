@@ -39,6 +39,10 @@ $pi: ".personal-info";
   grid-row: 2;
   color: $marine-blue;
 
+  @include for-size(phone-only) {
+    padding: $space-sm;
+  }
+
   &:focus-visible {
     border: none;
     outline: 2px solid $purplish-blue;
