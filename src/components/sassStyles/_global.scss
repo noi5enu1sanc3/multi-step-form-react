@@ -39,4 +39,12 @@ ul {
     margin: 0 auto;
     padding: $space-lg $space-md;
   }
+
+  &__title {
+    @include form-title;
+  }
+
+  &__subtitle {
+    @include form-subtitle;
+  }
 }

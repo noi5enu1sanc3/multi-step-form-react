@@ -12,7 +12,6 @@ function PersonalInfo({
   // setIsValid,
   handleUpdate,
 }) {
-  // const { userName, email, phone } = userData;
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -27,7 +26,6 @@ function PersonalInfo({
 
   const handleSubmitPersonal = () => {
     handleUpdate({ personal: values });
-    // dispatch(goNext());
   };
 
   useEffect(() => {

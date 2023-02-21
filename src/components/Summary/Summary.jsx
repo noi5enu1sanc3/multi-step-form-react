@@ -5,17 +5,24 @@ import { useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { jumpToStep } from '../FormNav/formUpdaterSlice';
+import SectionWithForm from '../SectionWithForm/SectionWithForm';
 
 function Summary() {
+  const data = useSelector((state) => state.formUpdater.data);
+
   const {
     billing,
     addOns,
     totalCost,
-  } = useSelector((state) => state.formUpdater.data);
+  } = data;
 
   const dispatch = useDispatch();
 
   const handleJump = useCallback((step) => { dispatch(jumpToStep(step)); }, []);
+
+  const handleSubmitSubscription = () => {
+    console.log(data);
+  };
 
   const renderPlanCost = () => (
     <span
@@ -34,9 +41,13 @@ function Summary() {
   );
 
   return (
-    <section className="summary section-default">
-      <h2 className="summary__title">Finishing up</h2>
-      <p className="summary__subtitle">Double-check everything looks OK before confirming.</p>
+    <SectionWithForm
+      className="summary section-default"
+      name="summary"
+      title="Finishing up"
+      subtitle="Double-check everything looks OK before confirming."
+      onUpdate={handleSubmitSubscription}
+    >
       <div className="summary__result-container">
         <div className="summary__billing-wrapper">
           <span className="summary__billing-plan">{`${billing.plan} (${billing.monthly ? 'Monthly' : 'Yearly'})`}</span>
@@ -73,7 +84,7 @@ function Summary() {
           </span>
         </div>
       </div>
-    </section>
+    </SectionWithForm>
   );
 }
 

@@ -47,7 +47,7 @@ function FormNav({
         onClick={handleNext}
         disabled={!isNextButtonActive}
       >
-        <span>Next step</span>
+        <span>{currentStep === 4 ? 'Confirm' : 'Next step'}</span>
       </button>
     </nav>
   );

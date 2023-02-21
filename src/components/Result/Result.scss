@@ -1,0 +1,49 @@
+@import '../sassStyles/mixins';
+@import '../sassStyles/variables';
+
+$rs: '.result-section';
+
+#{$rs} {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  @include for-size(phone-only) {
+    height: 70%;
+  }
+
+  &__message-container {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon_success {
+    background-image: url('../../assets/images/icon-thank-you.svg');
+    $size: $space-xxl;
+    width: $size;
+    height: $size;
+    background-size: contain;
+    background-position: center;
+    margin-bottom: $space-lg;
+  }
+
+  &__title {
+    font-size: $fs-title-lg;
+    color: $marine-blue;
+    margin-bottom: $space-md;
+  }
+
+  &__text {
+    font-size: $fs-primary-lg;
+    color: $cool-gray;
+    line-height: 1.5;
+    max-width: 70%;
+    text-align: center;
+
+    @include for-size(phone-only) {
+      font-size: $fs-primary;
+    }
+  }
+}

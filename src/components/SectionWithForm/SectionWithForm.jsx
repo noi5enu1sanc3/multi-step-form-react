@@ -10,9 +10,9 @@ function SectionWithForm({
   children,
 }) {
   return (
-    <section>
-      <h2 className="form__title">{title}</h2>
-      <p className="form__subtitle">{subtitle}</p>
+    <section className="section-default">
+      <h2 className="section-default__title">{title}</h2>
+      <p className="section-default__subtitle">{subtitle}</p>
       <form name={name} onSubmit={onUpdate}>
         {children}
         <FormNav onUpdate={onUpdate} />

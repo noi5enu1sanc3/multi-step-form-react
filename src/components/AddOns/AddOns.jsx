@@ -21,7 +21,6 @@ function AddOns({ handleUpdate }) {
 
   return (
     <SectionWithForm
-      className="addOns section-default"
       name="addOns"
       title="Pick add-ons"
       subtitle="Add-ons help enhance your gaming experience."

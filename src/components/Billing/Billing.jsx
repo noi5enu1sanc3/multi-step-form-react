@@ -38,7 +38,6 @@ function Billing({ handleUpdate }) {
 
   return (
     <SectionWithForm
-      className="billing section-default"
       name="billing"
       title="Select your plan"
       subtitle="You have the option of monthly or yearly billing."

@@ -8,6 +8,7 @@ import Billing from '../Billing/Billing';
 import PersonalInfo from '../PersonalInfo/PersonalInfo';
 // import FormNav from '../FormNav/FormNav';
 import { setData } from '../FormNav/formUpdaterSlice';
+import Result from '../Result/Result';
 // import useFormAndValidation from '../../hooks/useFormAndValidation';
 
 function FormContainer() {
@@ -60,6 +61,10 @@ function FormContainer() {
         return (
           <Summary />
         );
+      case 5:
+        return (
+          <Result />
+        );
       default:
         return null;
     }
@@ -68,10 +73,6 @@ function FormContainer() {
   return (
     <div className="form-container">
       {renderCurrentComponent(currentStep)}
-      {/* <FormNav
-        isNextButtonActive={currentStep === 1 ? isValid : true}
-        handleUpdate={handleUpdate}
-      /> */}
     </div>
   );
 }
