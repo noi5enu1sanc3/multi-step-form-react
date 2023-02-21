@@ -5,8 +5,6 @@
     @media (max-width: 700px) { @content; }
   } @else if $size == tablet {
     @media (max-width: 900px) { @content; }
-  } @else if $size == desktop-up {
-    @media (max-width: 1200px) { @content; }
   }
 }
 

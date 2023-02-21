@@ -21,12 +21,16 @@ $pi: ".personal-info";
 
 #{$pi}-label {
   display: grid;
-  grid-template-columns: 2;
   row-gap: $space-xs;
   margin-bottom: $space-md;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @include for-size(phone-only) {
+    margin-bottom: $space-sm;
+    grid-template-rows: $space-lg auto;
   }
 }
 
@@ -62,6 +66,7 @@ $pi: ".personal-info";
 #{$pi}-label-text {
   color: $marine-blue;
   font-size: $fs-sm;
+  align-self: end;
 }
 
 #{$pi}-error-text {

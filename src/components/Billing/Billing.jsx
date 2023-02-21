@@ -1,106 +1,123 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector } from 'react-redux';
 import './Billing.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import servicesData from '../../utils/services.json';
 import BillingOptionItem from './BillingOptionItem';
+import SectionWithForm from '../SectionWithForm/SectionWithForm';
 
-function Billing({ userData, setUserData }) {
-  const { billingOption } = userData;
+function Billing({ handleUpdate }) {
+  const [values, setValues] = useState({ plan: 'arcade', cost: 9, monthly: true });
 
   const [isChecked, setIsChecked] = useState(false);
 
+  const billingData = useSelector((state) => state.formUpdater.data.billing);
+
   const handleBillingOptionChange = () => {
     setIsChecked((prev) => !prev);
-    if (userData.billingOption === 'Yearly') {
-      setUserData({
-        ...userData,
-        billingOption: 'Monthly',
+    if (!values.monthly) {
+      setValues({
+        ...values,
+        monthly: true,
       });
     } else {
-      setUserData({
-        ...userData,
-        billingOption: 'Yearly',
+      setValues({
+        ...values,
+        monthly: false,
       });
     }
   };
 
+  const handleSubmitBilling = () => { handleUpdate({ billing: values }); };
+
+  useEffect(() => {
+    setValues(billingData);
+  }, []);
+
   return (
-    <section className="billing section-default">
-      <h2 className="billing__title">Select your plan</h2>
-      <p className="billing__subtitle">You have the option of monthly or yearly billing.</p>
-      <form className="billing-form">
-        <fieldset className="billing-options-buttons-container">
-          <ul className="billing-options-buttons-list">
-            {
+    <SectionWithForm
+      className="billing section-default"
+      name="billing"
+      title="Select your plan"
+      subtitle="You have the option of monthly or yearly billing."
+      onUpdate={handleSubmitBilling}
+    >
+
+      <fieldset className="billing-options-buttons-container">
+        <ul className="billing-options-buttons-list">
+          {
               servicesData.billingPlans.map((data) => (
                 <BillingOptionItem
                   key={data.id}
                   name={data.name}
                   cost={data.cost}
                   optionType={data.name}
-                  userData={userData}
-                  setUserData={setUserData}
+                  values={values}
+                  setValues={setValues}
                 />
               ))
             }
-          </ul>
-        </fieldset>
-        <div className="billing-options-period-container">
-          <button
-            type="button"
-            disabled={isChecked}
-            className={
+        </ul>
+      </fieldset>
+      <div className="billing-options-period-container">
+        <button
+          type="button"
+          disabled={!isChecked}
+          className={
               `billing-options-period-text
-              ${billingOption === 'Monthly'
+              ${values.monthly
                 ? 'billing-options-period-text_selected'
                 : ''}`
           }
-            onClick={handleBillingOptionChange}
-          >
-            Monthly
-          </button>
-          <label htmlFor="billing-option" className="billing-options-period-label">
-            <input
-              type="checkbox"
-              id="billing-option"
-              className={`billing-options-period-input ${billingOption === 'Yearly' ? 'billing-options-period-input_state_checked' : ''}`}
-              checked={isChecked}
-              onChange={handleBillingOptionChange}
-            />
-            <div className="billing-options-period-slider" />
-          </label>
-          <button
-            type="button"
-            disabled={!isChecked}
-            onClick={handleBillingOptionChange}
-            className={
+          onClick={handleBillingOptionChange}
+        >
+          Monthly
+        </button>
+        <label htmlFor="billing-option" className="billing-options-period-label">
+          <input
+            type="checkbox"
+            id="billing-option"
+            className={`billing-options-period-input ${!values.monthly
+              ? 'billing-options-period-input_state_checked' : ''}`}
+            checked={isChecked}
+            onChange={handleBillingOptionChange}
+          />
+          <div className="billing-options-period-slider" />
+        </label>
+        <button
+          type="button"
+          disabled={isChecked}
+          onClick={handleBillingOptionChange}
+          className={
               `billing-options-period-text
               ${
-                billingOption === 'Yearly'
+                !values.monthly
                   ? 'billing-options-period-text_selected'
                   : ''
               }`
           }
-          >
-            Yearly
-          </button>
-        </div>
-      </form>
-    </section>
+        >
+          Yearly
+        </button>
+      </div>
+
+    </SectionWithForm>
   );
 }
 
 Billing.propTypes = {
-  userData: PropTypes.shape({
-    userName: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    plan: PropTypes.string.isRequired,
-    billingOption: PropTypes.string.isRequired,
-    addOns: PropTypes.instanceOf(Set).isRequired,
-  }).isRequired,
-  setUserData: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
+  // userData: PropTypes.shape({
+  //   userName: PropTypes.string.isRequired,
+  //   email: PropTypes.string.isRequired,
+  //   phone: PropTypes.string.isRequired,
+  //   plan: PropTypes.string.isRequired,
+  //   billingOption: PropTypes.string.isRequired,
+  //   addOns: PropTypes.instanceOf(Set).isRequired,
+  // }).isRequired,
+  // setUserData: PropTypes.func.isRequired,
 };
 
 export default Billing;

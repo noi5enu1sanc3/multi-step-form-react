@@ -19,6 +19,8 @@
       }
     ],
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "no-param-reassign": [2, { "props": false }]
   }
 }

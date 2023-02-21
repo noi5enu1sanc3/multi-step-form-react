@@ -1,43 +1,35 @@
 import './Summary.scss';
+import { useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useDispatch, useSelector } from 'react-redux';
+import { jumpToStep } from '../FormNav/formUpdaterSlice';
 
-function Summary({ userData, setCurrentStep }) {
+function Summary() {
   const {
-    plan, planCost, billingOption, addOns,
-  } = userData;
+    billing,
+    addOns,
+    totalCost,
+  } = useSelector((state) => state.formUpdater.data);
 
-  const renderPlanCost = (option, cost) => (
+  const dispatch = useDispatch();
+
+  const handleJump = useCallback((step) => { dispatch(jumpToStep(step)); }, []);
+
+  const renderPlanCost = () => (
     <span
       className="summary__plan-cost"
     >
-      {option === 'Monthly' ? `$${cost}/mo` : `$${cost * 12}/y`}
+      {billing.monthly ? `$${billing.cost}/mo` : `$${billing.cost * 12}/y`}
     </span>
   );
 
-  const renderAddonCost = (option, cost) => (
-    <span
-      className="summary__add-ons-cost"
-    >
-      {option === 'Monthly' ? `+$${cost}/mo` : `+$${cost * 12}/y`}
-    </span>
-  );
-
-  const renderTotalText = (option) => (
+  const renderTotalText = () => (
     <span
       className="summary__total-text"
     >
-      {`Total (per ${option === 'Monthly' ? 'month' : 'year'})`}
-    </span>
-  );
-
-  const renderTotalCost = (option, cost, addonsArray) => (
-    <span className="summary__total-sum">
-      {option === 'Monthly' ? `$${cost + (
-        addonsArray.reduce((acc, cur) => acc + cur.cost, 0)
-      )}/mo` : `$${cost * 12 + (
-        addonsArray.reduce((acc, cur) => acc + cur.cost * 12, 0)
-      )}/y`}
+      {`Total (per ${billing.monthly ? 'month' : 'year'})`}
     </span>
   );
 
@@ -47,15 +39,15 @@ function Summary({ userData, setCurrentStep }) {
       <p className="summary__subtitle">Double-check everything looks OK before confirming.</p>
       <div className="summary__result-container">
         <div className="summary__billing-wrapper">
-          <span className="summary__billing-plan">{`${plan} (${billingOption})`}</span>
+          <span className="summary__billing-plan">{`${billing.plan} (${billing.monthly ? 'Monthly' : 'Yearly'})`}</span>
           <button
             type="button"
             className="summary__change-button"
-            onClick={() => setCurrentStep(2)}
+            onClick={() => handleJump(2)}
           >
             <span className="summary__change-text">Change</span>
           </button>
-          {renderPlanCost(billingOption, planCost)}
+          {renderPlanCost()}
         </div>
         <ul className="summary__add-ons-list">
           {
@@ -65,31 +57,24 @@ function Summary({ userData, setCurrentStep }) {
                 key={addon.id}
               >
                 <span className="summary__add-ons-title">{addon.name}</span>
-                {renderAddonCost(billingOption, addon.cost)}
+                <span
+                  className="summary__add-ons-cost"
+                >
+                  {billing.monthly ? `+$${addon.cost}/mo` : `+$${addon.cost * 12}/y`}
+                </span>
               </li>
             ))
           }
         </ul>
         <div className="summary__total-wrapper">
-          {renderTotalText(billingOption)}
-          {renderTotalCost(billingOption, planCost, [...addOns])}
+          {renderTotalText()}
+          <span className="summary__total-sum">
+            {`$${totalCost}/${billing.monthly ? 'mo' : 'y'}`}
+          </span>
         </div>
       </div>
     </section>
   );
 }
-
-Summary.propTypes = {
-  userData: PropTypes.shape({
-    userName: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    plan: PropTypes.string.isRequired,
-    billingOption: PropTypes.string.isRequired,
-    addOns: PropTypes.instanceOf(Set).isRequired,
-    planCost: PropTypes.number.isRequired,
-  }).isRequired,
-  setCurrentStep: PropTypes.func.isRequired,
-};
 
 export default Summary;

@@ -2,16 +2,16 @@
 import PropTypes from 'prop-types';
 
 function BillingOptionItem({
-  name, cost, userData, setUserData, optionType,
+  name, cost, values, setValues, optionType,
 }) {
-  const { plan } = userData;
+  const { plan } = values;
 
   const handlePlanChange = (evt) => {
     if (evt.target.checked) {
-      setUserData({
-        ...userData,
+      setValues({
+        ...values,
         plan: evt.target.value,
-        planCost: cost,
+        cost,
       });
     }
   };
@@ -43,15 +43,12 @@ BillingOptionItem.propTypes = {
   name: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
   optionType: PropTypes.string.isRequired,
-  userData: PropTypes.shape({
-    userName: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+  values: PropTypes.shape({
     plan: PropTypes.string.isRequired,
-    billingOption: PropTypes.string.isRequired,
-    addOns: PropTypes.instanceOf(Set).isRequired,
+    cost: PropTypes.number.isRequired,
+    monthly: PropTypes.bool.isRequired,
   }).isRequired,
-  setUserData: PropTypes.func.isRequired,
+  setValues: PropTypes.func.isRequired,
 };
 
 export default BillingOptionItem;

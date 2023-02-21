@@ -2,17 +2,17 @@
   "billingPlans": [
     {
       "id": 1,
-      "name": "Arcade",
+      "name": "arcade",
       "cost": 9
     },
     {
       "id": 2,
-      "name": "Advanced",
+      "name": "advanced",
       "cost": 12
     },
     {
       "id": 3,
-      "name": "Pro",
+      "name": "pro",
       "cost": 15
     }
   ],

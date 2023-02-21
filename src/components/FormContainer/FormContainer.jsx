@@ -1,66 +1,64 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import './FormContainer.scss';
 import AddOns from '../AddOns/AddOns';
 import Summary from '../Summary/Summary';
 import Billing from '../Billing/Billing';
 import PersonalInfo from '../PersonalInfo/PersonalInfo';
-import FormNav from '../FormNav/FormNav';
+// import FormNav from '../FormNav/FormNav';
+import { setData } from '../FormNav/formUpdaterSlice';
 // import useFormAndValidation from '../../hooks/useFormAndValidation';
 
-function FormContainer({ currentStep, setCurrentStep }) {
-  const [userData, setUserData] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    plan: 'Arcade',
-    billingOption: 'Monthly',
-    addOns: new Set(),
-    planCost: 9,
-  });
+function FormContainer() {
+  // const [userData, setUserData] = useState({
+  //   personal: {
+  //     userName: '',
+  //     email: '',
+  //     phone: '',
+  //   },
+  //   billing: { plan: 'arcade', cost: 9, monthly: true },
+  //   addOns: [],
+  // });
 
-  const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
+  const currentStep = useSelector((state) => state.formUpdater.step);
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setUserData({ ...userData, [name]: value });
-    setErrors({ ...errors, [name]: evt.target.validationMessage });
-    setIsValid(evt.target.closest('.js-form').checkValidity());
-  };
+  // const [errors, setErrors] = useState({});
+  // const [isValid, setIsValid] = useState(false);
+  const dispatch = useDispatch();
+  const handleUpdate = (data) => { dispatch(setData(data)); };
+
+  // const handleChange = (evt) => {
+  //   const { name, value } = evt.target;
+  //   setUserData({ ...userData, [name]: value });
+  //   setErrors({ ...errors, [name]: evt.target.validationMessage });
+  //   setIsValid(evt.target.closest('.js-form').checkValidity());
+  // };
 
   const renderCurrentComponent = (step) => {
     switch (step) {
       case 1:
         return (
           <PersonalInfo
-            handleChange={handleChange}
-            errors={errors}
-            setUserData={setUserData}
-            userData={userData}
+            // setIsValid={setIsValid}
+            handleUpdate={handleUpdate}
           />
         );
       case 2:
         return (
           <Billing
-            setUserData={setUserData}
-            userData={userData}
+            handleUpdate={handleUpdate}
           />
         );
       case 3:
         return (
           <AddOns
-            userData={userData}
-            setUserData={setUserData}
+            handleUpdate={handleUpdate}
           />
         );
       case 4:
         return (
-          <Summary
-            userData={userData}
-            setCurrentStep={setCurrentStep}
-          />
+          <Summary />
         );
       default:
         return null;
@@ -70,18 +68,12 @@ function FormContainer({ currentStep, setCurrentStep }) {
   return (
     <div className="form-container">
       {renderCurrentComponent(currentStep)}
-      <FormNav
+      {/* <FormNav
         isNextButtonActive={currentStep === 1 ? isValid : true}
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-      />
+        handleUpdate={handleUpdate}
+      /> */}
     </div>
   );
 }
-
-FormContainer.propTypes = {
-  currentStep: PropTypes.number.isRequired,
-  setCurrentStep: PropTypes.func.isRequired,
-};
 
 export default FormContainer;

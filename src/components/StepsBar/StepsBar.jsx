@@ -1,8 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector } from 'react-redux';
 import './StepsBar.scss';
 
-function StepsBar({ currentStep }) {
+function StepsBar() {
+  const currentStep = useSelector((state) => state.formUpdater.step);
   const stepsData = [
     {
       step: 1,
@@ -40,9 +42,5 @@ function StepsBar({ currentStep }) {
     </aside>
   );
 }
-
-StepsBar.propTypes = {
-  currentStep: PropTypes.number.isRequired,
-};
 
 export default StepsBar;
