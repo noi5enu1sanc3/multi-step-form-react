@@ -13,7 +13,7 @@ function SectionWithForm({
     <section className="section-default">
       <h2 className="section-default__title">{title}</h2>
       <p className="section-default__subtitle">{subtitle}</p>
-      <form name={name} onSubmit={onUpdate}>
+      <form name={name} className="form-default" onSubmit={onUpdate}>
         {children}
         <FormNav onUpdate={onUpdate} />
       </form>

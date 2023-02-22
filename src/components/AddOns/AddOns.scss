@@ -24,6 +24,10 @@ input[type="checkbox"] {
     &__option {
       margin-bottom: $space-sm;
 
+      @include for-size(desktop-small) {
+        margin-bottom: $space-xs;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -35,12 +39,15 @@ input[type="checkbox"] {
       padding: $space-md;
       display: grid;
       grid-template-columns: min-content auto auto;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
       row-gap: $space-xxs;
       cursor: pointer;
 
-      @include for-size(phone-only) {
+      @include for-size(desktop-small) {
         padding: $space-sm;
+      }
+
+      @include for-size(tablet) {
         grid-template-rows: repeat(2, minmax(min-content, max-content));
       }
 
@@ -62,7 +69,7 @@ input[type="checkbox"] {
       margin-right: $space-md;
       border: 1px solid $cool-gray;
 
-      @include for-size(phone-only) {
+      @include for-size(tablet) {
         margin-right: $space-sm;
       }
 
@@ -81,9 +88,12 @@ input[type="checkbox"] {
       font-weight: 500;
       font-size: $fs-primary;
 
-      @include for-size(phone-only) {
-        align-self: end;
+      @include for-size(desktop-small) {
         font-size: $fs-primary-sm;
+      }
+
+      @include for-size(tablet) {
+        align-self: end;
       }
     }
 
@@ -93,7 +103,7 @@ input[type="checkbox"] {
       color: $cool-gray;
       font-size: $fs-primary-sm;
 
-      @include for-size(phone-only) {
+      @include for-size(desktop-small) {
         font-size: $fs-sm;
       }
     }

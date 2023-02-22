@@ -28,7 +28,7 @@ $pi: ".personal-info";
     margin-bottom: 0;
   }
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     margin-bottom: $space-sm;
     grid-template-rows: $space-lg auto;
   }
@@ -43,7 +43,7 @@ $pi: ".personal-info";
   grid-row: 2;
   color: $marine-blue;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     padding: $space-sm;
   }
 

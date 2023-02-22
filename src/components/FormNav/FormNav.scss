@@ -4,7 +4,6 @@ $fn: '.form-nav';
 
 #{$fn} {
   margin-top: auto;
-  padding-top: $space-xl;
   display: flex;
   justify-content: space-between;
 
@@ -19,6 +18,14 @@ $fn: '.form-nav';
     font-size: $fs-primary-sm;
     font-weight: 500;
     transition: all $transition-primary;
+    padding: $space-sm 0;
+    min-width: 95px;
+
+    @include for-size(desktop-small) {
+      font-size: $fs-sm;
+      padding: $space-xs 0;
+      min-width: 82px;
+    }
 
     &_direction_back {
       color: $cool-gray;
@@ -35,7 +42,6 @@ $fn: '.form-nav';
 
     &_direction_next {
       border-radius: $radius-small;
-      padding: $space-sm $space-md;
       background-color: $marine-blue;
       color: $magnolia;
 

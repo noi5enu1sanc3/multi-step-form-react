@@ -32,9 +32,13 @@ ul {
 }
 
 .section-default {
-  @include for-size(phone-only) {
+  @include flex-column;
+  height: 100%;
+
+  @include for-size(tablet) {
     background-color: $white;
     width: 80%;
+    height: 70%;
     border-radius: $radius-small;
     margin: 0 auto;
     padding: $space-lg $space-md;
@@ -47,4 +51,9 @@ ul {
   &__subtitle {
     @include form-subtitle;
   }
+}
+
+.form-default {
+  @include flex-column;
+  flex-grow: 1;
 }

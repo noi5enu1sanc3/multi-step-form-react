@@ -9,7 +9,7 @@ $rs: '.result-section';
   align-items: center;
   height: 100%;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     height: 70%;
   }
 
@@ -42,7 +42,7 @@ $rs: '.result-section';
     max-width: 70%;
     text-align: center;
 
-    @include for-size(phone-only) {
+    @include for-size(tablet) {
       font-size: $fs-primary;
     }
   }

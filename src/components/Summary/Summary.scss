@@ -21,6 +21,15 @@ $sum: ".summary";
     grid-template-columns: 2fr 1fr;
     grid-template-rows: repeat(2, 1fr);
     row-gap: $space-xs;
+
+    @include for-size(desktop-small) {
+      padding-top: $space-sm;
+      padding-bottom: $space-sm;
+    }
+
+    @include for-size(tablet) {
+      padding: $space-md;
+    }
   }
 
   &__billing-plan {
@@ -74,6 +83,14 @@ $sum: ".summary";
     padding-top: $space-md;
     display: flex;
     justify-content: space-between;
+
+    @include for-size(desktop-small) {
+      padding-top: $space-sm;
+    }
+
+    @include for-size(tablet) {
+      padding-top: $space-md;
+    }
   }
 
   &__add-ons-item:first-child {

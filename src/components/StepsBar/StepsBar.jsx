@@ -30,11 +30,11 @@ function StepsBar() {
         {
             stepsData.map((item) => (
               <li className="bar-item" key={item.step}>
-                <button type="button" className="bar-item__button">
+                <div type="button" className="bar-item__wrapper">
                   <span className={`bar-item__step-number ${item.step === currentStep ? 'bar-item__step-number_active' : ''}`}>{item.step}</span>
                   <span className="bar-item__step-title">{`STEP ${item.step}`}</span>
                   <span className="bar-item__step-subtitle">{item.subtitle}</span>
-                </button>
+                </div>
               </li>
             ))
           }

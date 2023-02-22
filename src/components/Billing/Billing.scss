@@ -17,7 +17,7 @@ $opt: 'options';
   padding: 0;
   margin-bottom: $space-lg;
 
-  @include for-size(phone-only) {
+  @include for-size(desktop-small) {
     margin-bottom: $space-md;
   }
 }
@@ -27,7 +27,7 @@ $opt: 'options';
   gap: $space-md;
   min-width: 100%;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     @include flex-column;
     gap: $space-sm;
   }
@@ -36,7 +36,7 @@ $opt: 'options';
 #{$bi}-#{$opt}-item {
   width: calc((100% - 30px) / 3);
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     width: 100%
   }
 }
@@ -52,7 +52,7 @@ input[type='radio'] {
   padding: $space-sm $space-xs;
   cursor: pointer;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     flex-direction: row;
   }
 
@@ -81,7 +81,7 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   margin-bottom: $size;
   transition: all $transition-primary;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     margin-bottom: 0;
     margin-right: $space-md;
   }
@@ -109,7 +109,7 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   font-weight: 500;
   margin-bottom: $space-xxs;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     margin-bottom: $space-xxxs;
   }
 }
@@ -126,6 +126,14 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include for-size(desktop-small) {
+    padding: $space-sm 0;
+  }
+
+  @include for-size(tablet) {
+    padding: $space-md 0;
+  }
 }
 
 #{$bi}-#{$opt}-period-label {
@@ -177,6 +185,14 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   font-size: $fs-primary;
   font-weight: 500;
   cursor: pointer;
+
+  @include for-size(desktop-small) {
+    font-size: $fs-primary-sm;
+  }
+
+  @include for-size(tablet) {
+    font-size: $fs-primary;
+  }
 
   &_selected {
     color: $marine-blue;

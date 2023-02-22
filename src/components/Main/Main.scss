@@ -2,15 +2,20 @@
 @import '../sassStyles/mixins';
 
 .main {
-  $width: 60vw;
-  min-height: 70vh;
-  min-width: $width;
+  // min-height: 70vh;
+  width: 60vw;
+  aspect-ratio: 1.6;
   display: flex;
   padding: $space-sm 0 $space-sm $space-sm;
   border-radius: $radius-large;
   background-color: $white;
 
-  @include for-size(phone-only) {
+  @include for-size(desktop-smaller) {
+    width: 65vw;
+    aspect-ratio: 1.4;
+  }
+
+  @include for-size(tablet) {
     @include flex-column;
     align-items: center;
     min-width: 100%;

@@ -12,7 +12,15 @@ $sb: '.steps-bar';
   padding: $space-lg;
   min-width: 20%;
 
-  @include for-size(phone-only) {
+  @include for-size(desktop-smaller) {
+    padding: $space-lg $space-md;
+  }
+
+  @include for-size(desktop-small) {
+    padding: $space-lg $space-sm;
+  }
+
+  @include for-size(tablet) {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -27,7 +35,7 @@ $sb: '.steps-bar';
   @include flex-column;
   gap: $space-lg;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     flex-direction: row;
     gap: $space-sm;
     max-width: fit-content;
@@ -37,15 +45,18 @@ $sb: '.steps-bar';
 $bi: '.bar-item';
 
 #{$bi} {
-  &__button {
-    @include reset-button;
+  &__wrapper {
     color: $alabaster;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: min-content auto;
     column-gap: $space-md;
     text-align: start;
 
-    @include for-size(phone-only) {
+    @include for-size(desktop-smaller) {
+      column-gap: $space-sm;
+    }
+
+    @include for-size(tablet) {
       column-gap: 0;
     }
   }
@@ -59,6 +70,7 @@ $bi: '.bar-item';
     border: 1px solid $alabaster;
     justify-content: center;
     align-items: center;
+    align-self: center;
     grid-column: 1;
     grid-row: 1 / span 2;
     transition: all $transition-short;
@@ -75,7 +87,7 @@ $bi: '.bar-item';
     grid-column: 2;
     font-size: $fs-sm;
 
-    @include for-size(phone-only) {
+    @include for-size(tablet) {
       display: none;
     }
   }
@@ -85,11 +97,15 @@ $bi: '.bar-item';
     font-size: $fs-primary;
     font-weight: 500;
 
+    @include for-size(desktop-smaller) {
+      font-size: $fs-primary-sm;
+    }
+
     @include for-size(tablet) {
       font-size: $fs-primary-sm;
     }
 
-    @include for-size(phone-only) {
+    @include for-size(tablet) {
       display: none;
     }
   }

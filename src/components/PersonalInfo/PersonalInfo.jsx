@@ -82,59 +82,6 @@ function PersonalInfo({
         />
       </label>
     </SectionWithForm>
-    // <section className="personal-info section-default">
-    //   <h2 className="personal-info__title">Personal Info</h2>
-    //   <p className="personal-info__subtitle">
-    //     Please provide your name, e-mail address, and phone number.
-    //   </p>
-    //   <form className="personal-info-form js-form" noValidate onSubmit={handleSubmit}>
-    //     <label htmlFor="userName" className="personal-info-label">
-    //       <span className="personal-info-label-text">Name</span>
-    //       <span className="personal-info-error-text">{errors.userName}</span>
-    //       <input
-    //         type="text"
-    //         name="userName"
-    //         id="userName"
-    //         className={`personal-info-input ${errors.userName
-    // ? 'personal-info-input_state_error' : ''}`}
-    //         placeholder="e.g. Stephen King"
-    //         value={values.userName || ''}
-    //         onChange={handleChange}
-    //         required
-    //       />
-    //     </label>
-    //     <label htmlFor="userEmail" className="personal-info-label">
-    //       <span className="personal-info-label-text">E-mail</span>
-    //       <span className="personal-info-error-text">{errors.email}</span>
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         id="userEmail"
-    //         className={`personal-info-input ${errors.email
-    // ? 'personal-info-input_state_error' : ''}`}
-    // //         placeholder="e.g. stephenking@lorem.com"
-    // //         value={values.email || ''}
-    // //         onChange={handleChange}
-    // //         required
-    // //       />
-    // //     </label>
-    // //     <label htmlFor="userPhone" className="personal-info-label">
-    // //       <span className="personal-info-label-text">Phone number</span>
-    // //       <span className="personal-info-error-text">{errors.phone}</span>
-    // //       <input
-    // //         type="tel"
-    // //         name="phone"
-    // //         id="userPhone"
-    // //         className={`personal-info-input ${errors.phone
-    // ? 'personal-info-input_state_error' : ''}`}
-    // //         placeholder="e.g. +1 234 567 890"
-    // //         value={values.phone || ''}
-    // //         onChange={handleChange}
-    // //         required
-    // //       />
-    // //     </label>
-    // //   </form>
-    // // </section>
   );
 }
 

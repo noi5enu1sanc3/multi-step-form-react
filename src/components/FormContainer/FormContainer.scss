@@ -2,14 +2,22 @@
 
 .form-container {
   @include flex-column;
-  padding: 50px 100px 30px;
+  padding: 5% 10% 3%;
   flex-grow: 1;
+
+  @include for-size(desktop-smaller) {
+    padding: 5% 8% 3%;
+  }
+
+  @include for-size(desktop-smaller) {
+    padding: 3% 8% 3%;
+  }
 
   @include for-size(tablet) {
     padding: $space-lg $space-xl $space-md;
   }
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     padding: 0;
     margin-top: calc($space-xl * -1);
     width: 100%;

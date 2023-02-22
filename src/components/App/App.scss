@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
 
-  @include for-size(phone-only) {
+  @include for-size(tablet) {
     align-items: normal;
   }
 }
