@@ -28,7 +28,7 @@ function BillingOptionItem({
           onChange={handlePlanChange}
         />
         <div className="billing-options-pseudo-button">
-          <div className={`billing-options-icon billing-options-icon_type_${optionType.toLowerCase()}`} />
+          <div className={`billing-options-icon billing-options-icon_type_${optionType}`} />
           <div className="billing-options-text-container">
             <span className="billing-options-title">{name}</span>
             <span className="billing-options-subtitle">{`$${cost}/mo`}</span>

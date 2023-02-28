@@ -5,10 +5,12 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotal, goBack, goNext } from './formUpdaterSlice';
 import './FormNav.scss';
+import { SUMMARY_SECTION_STEP_NUMBER } from '../../utils/constants';
 
 function FormNav({
   isNextButtonActive,
   onUpdate,
+  onSubmit,
 }) {
   const currentStep = useSelector((state) => state.formUpdater.step);
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function FormNav({
     evt.preventDefault();
     onUpdate();
 
-    if (currentStep === 3) {
+    if (currentStep + 1 === SUMMARY_SECTION_STEP_NUMBER) {
       dispatch(calculateTotal());
     }
 
@@ -26,8 +28,13 @@ function FormNav({
 
   const handleBack = (evt) => {
     evt.preventDefault();
-    onUpdate();
+    if (currentStep !== SUMMARY_SECTION_STEP_NUMBER) onUpdate();
     dispatch(goBack());
+  };
+
+  const handleConfirm = (evt) => {
+    evt.preventDefault();
+    onSubmit();
   };
 
   return (
@@ -44,10 +51,10 @@ function FormNav({
         className={`form-nav__button form-nav__button_direction_next ${
           !isNextButtonActive ? 'form-nav__button_direction_next_state_disabled' : ''
         }`}
-        onClick={handleNext}
+        onClick={currentStep === SUMMARY_SECTION_STEP_NUMBER ? handleConfirm : handleNext}
         disabled={!isNextButtonActive}
       >
-        <span>{currentStep === 4 ? 'Confirm' : 'Next step'}</span>
+        <span>{currentStep === SUMMARY_SECTION_STEP_NUMBER ? 'Confirm' : 'Next step'}</span>
       </button>
     </nav>
   );
@@ -55,21 +62,14 @@ function FormNav({
 
 FormNav.defaultProps = {
   isNextButtonActive: true,
+  onUpdate: undefined,
+  onSubmit: undefined,
 };
 
 FormNav.propTypes = {
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
+  onSubmit: PropTypes.func,
   isNextButtonActive: PropTypes.bool,
-  // handleUpdate: PropTypes.func.isRequired,
-  // userData: PropTypes.shape({
-  //   userName: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   phone: PropTypes.string.isRequired,
-  //   plan: PropTypes.string.isRequired,
-  //   billingOption: PropTypes.string.isRequired,
-  //   addOns: PropTypes.instanceOf(Set).isRequired,
-  // }).isRequired,
 };
 
-// export default FormNav;
 export default memo(FormNav);

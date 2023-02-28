@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice } from '@reduxjs/toolkit';
+import { DEFAULT_PLAN, DEFAULT_PLAN_COST } from '../../utils/constants';
 
 const initialState = {
   step: 1,
@@ -9,7 +10,7 @@ const initialState = {
       email: '',
       phone: '',
     },
-    billing: { plan: 'arcade', cost: 9, monthly: true },
+    billing: { plan: DEFAULT_PLAN, cost: DEFAULT_PLAN_COST, monthly: true },
     addOns: [],
     totalCost: 0,
   },
@@ -22,9 +23,6 @@ const formUpdater = createSlice({
     goNext: (state) => { state.step += 1; },
     goBack: (state) => { state.step -= 1; },
     jumpToStep: (state, action) => { state.step = action.payload; },
-    // setPersonal: (state, action) => { state.personal = action.payload; },
-    // setBilling: (state, action) => { state.billing = action.payload; },
-    // setAddons: (state, action) => { state.addOns = action.payload; },
     setData: (state, { payload }) => {
       state.data = {
         ...state.data,
@@ -43,9 +41,6 @@ export const {
   goNext,
   goBack,
   jumpToStep,
-  // setPersonal,
-  // setBilling,
-  // setAddons,
   setData,
   calculateTotal,
 } = formUpdater.actions;

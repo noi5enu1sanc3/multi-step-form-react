@@ -24,6 +24,12 @@ input[type="checkbox"] {
     &__option {
       margin-bottom: $space-sm;
 
+      &:focus-within {
+        outline: max(2px, 0.15em) solid $purplish-blue;
+        outline-offset: max(2px, 0.15em);
+        border-radius: $radius-small;
+      }
+
       @include for-size(desktop-small) {
         margin-bottom: $space-xs;
       }

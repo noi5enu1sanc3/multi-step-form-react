@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import './FormContainer.scss';
@@ -6,62 +5,47 @@ import AddOns from '../AddOns/AddOns';
 import Summary from '../Summary/Summary';
 import Billing from '../Billing/Billing';
 import PersonalInfo from '../PersonalInfo/PersonalInfo';
-// import FormNav from '../FormNav/FormNav';
 import { setData } from '../FormNav/formUpdaterSlice';
 import Result from '../Result/Result';
-// import useFormAndValidation from '../../hooks/useFormAndValidation';
+import {
+  ADDONS_SECTION_STEP_NUMBER,
+  BILLING_SECTION_STEP_NUMBER,
+  PERSONAL_INFO_SECTION_STEP_NUMBER,
+  RESULT_SECTION_STEP_NUMBER,
+  SUMMARY_SECTION_STEP_NUMBER,
+} from '../../utils/constants';
 
 function FormContainer() {
-  // const [userData, setUserData] = useState({
-  //   personal: {
-  //     userName: '',
-  //     email: '',
-  //     phone: '',
-  //   },
-  //   billing: { plan: 'arcade', cost: 9, monthly: true },
-  //   addOns: [],
-  // });
-
   const currentStep = useSelector((state) => state.formUpdater.step);
 
-  // const [errors, setErrors] = useState({});
-  // const [isValid, setIsValid] = useState(false);
   const dispatch = useDispatch();
   const handleUpdate = (data) => { dispatch(setData(data)); };
 
-  // const handleChange = (evt) => {
-  //   const { name, value } = evt.target;
-  //   setUserData({ ...userData, [name]: value });
-  //   setErrors({ ...errors, [name]: evt.target.validationMessage });
-  //   setIsValid(evt.target.closest('.js-form').checkValidity());
-  // };
-
   const renderCurrentComponent = (step) => {
     switch (step) {
-      case 1:
+      case PERSONAL_INFO_SECTION_STEP_NUMBER:
         return (
           <PersonalInfo
-            // setIsValid={setIsValid}
             handleUpdate={handleUpdate}
           />
         );
-      case 2:
+      case BILLING_SECTION_STEP_NUMBER:
         return (
           <Billing
             handleUpdate={handleUpdate}
           />
         );
-      case 3:
+      case ADDONS_SECTION_STEP_NUMBER:
         return (
           <AddOns
             handleUpdate={handleUpdate}
           />
         );
-      case 4:
+      case SUMMARY_SECTION_STEP_NUMBER:
         return (
           <Summary />
         );
-      case 5:
+      case RESULT_SECTION_STEP_NUMBER:
         return (
           <Result />
         );

@@ -17,9 +17,15 @@ $fn: '.form-nav';
 
     font-size: $fs-primary-sm;
     font-weight: 500;
-    transition: all $transition-primary;
+    transition: color $transition-primary, background-color $transition-primary;
     padding: $space-sm 0;
     min-width: 95px;
+
+    &:focus {
+      outline: max(2px, 0.15em) solid $purplish-blue;
+      outline-offset: max(2px, 0.15em);
+      border-radius: $radius-small;
+    }
 
     @include for-size(desktop-small) {
       font-size: $fs-sm;

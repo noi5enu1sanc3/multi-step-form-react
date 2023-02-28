@@ -39,6 +39,12 @@ $opt: 'options';
   @include for-size(tablet) {
     width: 100%
   }
+
+  &:focus-within {
+    outline: max(2px, 0.15em) solid $purplish-blue;
+    outline-offset: max(2px, 0.15em);
+    border-radius: $radius-small;
+  }
 }
 
 input[type='radio'] {
@@ -108,6 +114,7 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   font-size: $fs-primary;
   font-weight: 500;
   margin-bottom: $space-xxs;
+  text-transform: capitalize;
 
   @include for-size(tablet) {
     margin-bottom: $space-xxxs;
@@ -179,12 +186,25 @@ input[type='radio']:checked + #{$bi}-#{$opt}-pseudo-button {
   transform: translate(18px);
 }
 
+#{$bi}-#{$opt}-period-input:focus
+  + #{$bi}-#{$opt}-period-slider {
+    outline: max(2px, 0.15em) solid $purplish-blue;
+    outline-offset: max(2px, 0.15em);
+    border-radius: $radius-small;
+  }
+
 #{$bi}-#{$opt}-period-text {
   @include reset-button;
   color: $cool-gray;
   font-size: $fs-primary;
   font-weight: 500;
   cursor: pointer;
+
+  &:focus {
+    outline: max(2px, 0.15em) solid $purplish-blue;
+    outline-offset: max(2px, 0.25em);
+    border-radius: $radius-small;
+  }
 
   @include for-size(desktop-small) {
     font-size: $fs-primary-sm;

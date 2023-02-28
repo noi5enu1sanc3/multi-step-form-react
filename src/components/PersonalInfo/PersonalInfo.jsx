@@ -1,28 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-// import { goNext } from '../FormNav/formUpdaterSlice';
 import './PersonalInfo.scss';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import { PERSONAL_INFO_SUBTITLE, PERSONAL_INFO_TITLE } from '../../utils/constants';
 
 function PersonalInfo({
-  // setIsValid,
   handleUpdate,
 }) {
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
+  const {
+    values,
+    setValues,
+    handleChange,
+    errors,
+    isValid,
+  } = useFormAndValidation();
 
   const personalData = useSelector((state) => state.formUpdater.data.personal);
-
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: evt.target.validationMessage });
-    // setIsValid(evt.target.closest('.js-form').checkValidity());
-  };
 
   const handleSubmitPersonal = () => {
     handleUpdate({ personal: values });
@@ -35,9 +32,10 @@ function PersonalInfo({
   return (
     <SectionWithForm
       name="personal"
-      title="Personal Info"
-      subtitle="Please provide your name, e-mail address, and phone number."
+      title={PERSONAL_INFO_TITLE}
+      subtitle={PERSONAL_INFO_SUBTITLE}
       onUpdate={handleSubmitPersonal}
+      isValid={isValid}
     >
       <label htmlFor="userName" className="personal-info-label">
         <span className="personal-info-label-text">Name</span>
@@ -86,17 +84,6 @@ function PersonalInfo({
 }
 
 PersonalInfo.propTypes = {
-  // userData: PropTypes.shape({
-  //   userName: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   phone: PropTypes.string.isRequired,
-  //   plan: PropTypes.string.isRequired,
-  //   billingOption: PropTypes.string.isRequired,
-  //   addOns: PropTypes.instanceOf(Set).isRequired,
-  // }).isRequired,
-  // handleChange: PropTypes.func.isRequired,
-  // errors: PropTypes.objectOf(PropTypes.string).isRequired,
-  // setIsValid: PropTypes.func.isRequired,
   handleUpdate: PropTypes.func.isRequired,
 };
 

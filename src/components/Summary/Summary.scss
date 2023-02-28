@@ -39,6 +39,7 @@ $sum: ".summary";
     color: $marine-blue;
     font-size: $fs-primary;
     font-weight: 500;
+    text-transform: capitalize;
   }
 
   &__change-button {
@@ -47,6 +48,12 @@ $sum: ".summary";
     @include reset-button;
     cursor: pointer;
     justify-self: start;
+
+    &:focus {
+      outline: max(2px, 0.15em) solid $purplish-blue;
+      outline-offset: max(2px, 0.3em);
+      border-radius: $radius-small;
+    }
   }
 
   &__change-text {

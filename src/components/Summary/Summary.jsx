@@ -1,11 +1,15 @@
 import './Summary.scss';
 import { useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-// import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { jumpToStep } from '../FormNav/formUpdaterSlice';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
+import {
+  BILLING_SECTION_STEP_NUMBER,
+  RESULT_SECTION_STEP_NUMBER,
+  SUMMARY_SUBTITLE,
+  SUMMARY_TITLE,
+} from '../../utils/constants';
 
 function Summary() {
   const data = useSelector((state) => state.formUpdater.data);
@@ -21,7 +25,7 @@ function Summary() {
   const handleJump = useCallback((step) => { dispatch(jumpToStep(step)); }, []);
 
   const handleSubmitSubscription = () => {
-    console.log(data);
+    handleJump(RESULT_SECTION_STEP_NUMBER);
   };
 
   const renderPlanCost = () => (
@@ -44,9 +48,9 @@ function Summary() {
     <SectionWithForm
       className="summary section-default"
       name="summary"
-      title="Finishing up"
-      subtitle="Double-check everything looks OK before confirming."
-      onUpdate={handleSubmitSubscription}
+      title={SUMMARY_TITLE}
+      subtitle={SUMMARY_SUBTITLE}
+      onSubmit={handleSubmitSubscription}
     >
       <div className="summary__result-container">
         <div className="summary__billing-wrapper">
@@ -54,7 +58,7 @@ function Summary() {
           <button
             type="button"
             className="summary__change-button"
-            onClick={() => handleJump(2)}
+            onClick={() => handleJump(BILLING_SECTION_STEP_NUMBER)}
           >
             <span className="summary__change-text">Change</span>
           </button>

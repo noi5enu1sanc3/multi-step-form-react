@@ -7,16 +7,14 @@ import PropTypes from 'prop-types';
 import servicesData from '../../utils/services.json';
 import BillingOptionItem from './BillingOptionItem';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
+import { BILLING_SUBTITLE, BILLING_TITLE } from '../../utils/constants';
 
 function Billing({ handleUpdate }) {
   const [values, setValues] = useState({ plan: 'arcade', cost: 9, monthly: true });
 
-  const [isChecked, setIsChecked] = useState(false);
-
   const billingData = useSelector((state) => state.formUpdater.data.billing);
 
   const handleBillingOptionChange = () => {
-    setIsChecked((prev) => !prev);
     if (!values.monthly) {
       setValues({
         ...values,
@@ -39,8 +37,8 @@ function Billing({ handleUpdate }) {
   return (
     <SectionWithForm
       name="billing"
-      title="Select your plan"
-      subtitle="You have the option of monthly or yearly billing."
+      title={BILLING_TITLE}
+      subtitle={BILLING_SUBTITLE}
       onUpdate={handleSubmitBilling}
     >
 
@@ -63,7 +61,7 @@ function Billing({ handleUpdate }) {
       <div className="billing-options-period-container">
         <button
           type="button"
-          disabled={!isChecked}
+          disabled={values.monthly}
           className={
               `billing-options-period-text
               ${values.monthly
@@ -80,14 +78,14 @@ function Billing({ handleUpdate }) {
             id="billing-option"
             className={`billing-options-period-input ${!values.monthly
               ? 'billing-options-period-input_state_checked' : ''}`}
-            checked={isChecked}
+            checked={!values.monthly}
             onChange={handleBillingOptionChange}
           />
           <div className="billing-options-period-slider" />
         </label>
         <button
           type="button"
-          disabled={isChecked}
+          disabled={!values.monthly}
           onClick={handleBillingOptionChange}
           className={
               `billing-options-period-text
@@ -108,15 +106,6 @@ function Billing({ handleUpdate }) {
 
 Billing.propTypes = {
   handleUpdate: PropTypes.func.isRequired,
-  // userData: PropTypes.shape({
-  //   userName: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   phone: PropTypes.string.isRequired,
-  //   plan: PropTypes.string.isRequired,
-  //   billingOption: PropTypes.string.isRequired,
-  //   addOns: PropTypes.instanceOf(Set).isRequired,
-  // }).isRequired,
-  // setUserData: PropTypes.func.isRequired,
 };
 
 export default Billing;

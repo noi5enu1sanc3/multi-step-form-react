@@ -36,10 +36,6 @@
     font-size: $fs-title;
     margin-bottom: $space-xs;
   }
-
-  // @include for-size(tablet) {
-  //   font-size: $fs-primary-lg;
-  // }
 }
 
 @mixin form-subtitle {
@@ -51,11 +47,6 @@
     font-size: $fs-primary-sm;
     margin-bottom: $space-md;
   }
-
-  @include for-size(tablet) {
-    // font-size: $fs-primary-sm;
-
-  }
 }
 
 @mixin hide-default-input {
@@ -64,4 +55,5 @@
   height: 1px;
   overflow: hidden;
   clip-path: inset(0 0 0 0);
+  z-index: 1000;
 }

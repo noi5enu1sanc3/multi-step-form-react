@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import servicesData from '../../utils/services.json';
 import AddOnItem from './AddOnItem';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
+import { ADDONS_SUBTITLE, ADDONS_TITLE } from '../../utils/constants';
 
 function AddOns({ handleUpdate }) {
   const [values, setValues] = useState([]);
@@ -22,8 +23,8 @@ function AddOns({ handleUpdate }) {
   return (
     <SectionWithForm
       name="addOns"
-      title="Pick add-ons"
-      subtitle="Add-ons help enhance your gaming experience."
+      title={ADDONS_TITLE}
+      subtitle={ADDONS_SUBTITLE}
       onUpdate={handleSubmitAddOns}
     >
       <ul>
@@ -43,14 +44,6 @@ function AddOns({ handleUpdate }) {
 }
 
 AddOns.propTypes = {
-  // userData: PropTypes.shape({
-  //   userName: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   phone: PropTypes.string.isRequired,
-  //   plan: PropTypes.string.isRequired,
-  //   billingOption: PropTypes.string.isRequired,
-  //   addOns: PropTypes.instanceOf(Set).isRequired,
-  // }).isRequired,
   handleUpdate: PropTypes.func.isRequired,
 };
 

@@ -13,12 +13,6 @@ function AddOnItem({
 
   const handleToggleAddOn = (evt) => {
     if (!evt.target.checked) {
-      // const updatedSet = userData.addOns;
-      // updatedSet.delete(addon);
-      // setUserData({
-      //   ...userData,
-      //   addOns: new Set(updatedSet),
-      // });
       const updatedArray = values.filter((item) => item !== addon);
       setValues(updatedArray);
     } else {
