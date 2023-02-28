@@ -20,6 +20,13 @@ export const SUMMARY_SUBTITLE = 'Double-check everything looks OK before confirm
 export const RESULT_TITLE_SUCESS = 'Thank you';
 export const RESULT_SUBTITLE_SUCESS = 'Thanks for confirming your subscription!';
 
+// step bar step titles
+
+export const PERSONAL_INFO_STEP_TITLE = 'Your info';
+export const BILLING_STEP_TITLE = 'Select plan';
+export const ADDONS_STEP_TITLE = 'Add-ons';
+export const SUMMARY_STEP_TITLE = 'Summary';
+
 // default values
 export const DEFAULT_PLAN = 'arcade';
 export const DEFAULT_PLAN_COST = 9;

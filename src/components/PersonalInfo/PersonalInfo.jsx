@@ -17,6 +17,7 @@ function PersonalInfo({
     handleChange,
     errors,
     isValid,
+    setIsValid,
   } = useFormAndValidation();
 
   const personalData = useSelector((state) => state.formUpdater.data.personal);
@@ -27,6 +28,7 @@ function PersonalInfo({
 
   useEffect(() => {
     setValues(personalData);
+    setIsValid();
   }, []);
 
   return (

@@ -96,6 +96,7 @@ $bi: '.bar-item';
     grid-column: 2;
     font-size: $fs-primary;
     font-weight: 500;
+    text-transform: uppercase;
 
     @include for-size(desktop-smaller) {
       font-size: $fs-primary-sm;
