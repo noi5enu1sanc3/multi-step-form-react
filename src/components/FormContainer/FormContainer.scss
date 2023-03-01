@@ -9,17 +9,17 @@
     padding: 5% 8% 3%;
   }
 
-  @include for-size(desktop-smaller) {
+  @include for-size(desktop-small) {
     padding: 3% 8% 3%;
-  }
-
-  @include for-size(tablet) {
-    padding: $space-lg $space-xl $space-md;
   }
 
   @include for-size(tablet) {
     padding: 0;
     margin-top: calc($space-xl * -1);
     width: 100%;
+
+    &_centered-content {
+      justify-content: center;
+    }
   }
 }

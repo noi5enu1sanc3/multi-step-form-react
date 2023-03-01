@@ -54,8 +54,10 @@ function FormContainer() {
     }
   };
 
+  const isContentCentered = currentStep === RESULT_SECTION_STEP_NUMBER ? 'form-container_centered-content' : '';
+
   return (
-    <div className="form-container">
+    <div className={`form-container ${isContentCentered}`}>
       {renderCurrentComponent(currentStep)}
     </div>
   );
