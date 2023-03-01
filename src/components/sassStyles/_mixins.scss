@@ -12,6 +12,10 @@
   }
 }
 
+@mixin font-family {
+  font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;

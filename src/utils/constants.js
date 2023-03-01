@@ -30,3 +30,8 @@ export const SUMMARY_STEP_TITLE = 'Summary';
 // default values
 export const DEFAULT_PLAN = 'arcade';
 export const DEFAULT_PLAN_COST = 9;
+
+// input fields placeholders
+export const NAME_PLACEHOLDER = 'e.g. Stephen King';
+export const EMAIL_PLACEHOLDER = 'e.g. stephenking@lorem.com';
+export const PHONE_PLACEHOLDER = 'e.g. +1 234 567 890';

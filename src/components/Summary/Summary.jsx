@@ -10,6 +10,7 @@ import {
   SUMMARY_SUBTITLE,
   SUMMARY_TITLE,
 } from '../../utils/constants';
+import SummaryContent from './SummaryContent';
 
 function Summary() {
   const data = useSelector((state) => state.formUpdater.data);
@@ -28,22 +29,6 @@ function Summary() {
     handleJump(RESULT_SECTION_STEP_NUMBER);
   };
 
-  const renderPlanCost = () => (
-    <span
-      className="summary__plan-cost"
-    >
-      {billing.monthly ? `$${billing.cost}/mo` : `$${billing.cost * 12}/y`}
-    </span>
-  );
-
-  const renderTotalText = () => (
-    <span
-      className="summary__total-text"
-    >
-      {`Total (per ${billing.monthly ? 'month' : 'year'})`}
-    </span>
-  );
-
   return (
     <SectionWithForm
       className="summary section-default"
@@ -52,42 +37,12 @@ function Summary() {
       subtitle={SUMMARY_SUBTITLE}
       onSubmit={handleSubmitSubscription}
     >
-      <div className="summary__result-container">
-        <div className="summary__billing-wrapper">
-          <span className="summary__billing-plan">{`${billing.plan} (${billing.monthly ? 'Monthly' : 'Yearly'})`}</span>
-          <button
-            type="button"
-            className="summary__change-button"
-            onClick={() => handleJump(BILLING_SECTION_STEP_NUMBER)}
-          >
-            <span className="summary__change-text">Change</span>
-          </button>
-          {renderPlanCost()}
-        </div>
-        <ul className="summary__add-ons-list">
-          {
-            [...addOns].map((addon) => (
-              <li
-                className="summary__add-ons-item"
-                key={addon.id}
-              >
-                <span className="summary__add-ons-title">{addon.name}</span>
-                <span
-                  className="summary__add-ons-cost"
-                >
-                  {billing.monthly ? `+$${addon.cost}/mo` : `+$${addon.cost * 12}/y`}
-                </span>
-              </li>
-            ))
-          }
-        </ul>
-        <div className="summary__total-wrapper">
-          {renderTotalText()}
-          <span className="summary__total-sum">
-            {`$${totalCost}/${billing.monthly ? 'mo' : 'y'}`}
-          </span>
-        </div>
-      </div>
+      <SummaryContent
+        billing={billing}
+        addOns={addOns}
+        totalCost={totalCost}
+        onJump={() => handleJump(BILLING_SECTION_STEP_NUMBER)}
+      />
     </SectionWithForm>
   );
 }

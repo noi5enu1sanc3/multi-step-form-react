@@ -9,14 +9,14 @@
 }
 
 body {
-  font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+  @include font-family;
   background-color: $magnolia;
   margin: 0;
 }
 
 span,
 input {
-  font-family: 'Ubuntu', 'Times New Roman', Times, serif;
+  @include font-family;
 }
 
 h1,

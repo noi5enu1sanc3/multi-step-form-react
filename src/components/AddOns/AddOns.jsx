@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import './AddOns.scss';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-import servicesData from '../../utils/services.json';
-import AddOnItem from './AddOnItem';
+import AddOnsList from './AddOnsList';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
 import { ADDONS_SUBTITLE, ADDONS_TITLE } from '../../utils/constants';
 
@@ -27,18 +26,7 @@ function AddOns({ handleUpdate }) {
       subtitle={ADDONS_SUBTITLE}
       onUpdate={handleSubmitAddOns}
     >
-      <ul>
-        {
-          servicesData.addons.map((addon) => (
-            <AddOnItem
-              key={addon.id}
-              addon={addon}
-              values={values}
-              setValues={setValues}
-            />
-          ))
-        }
-      </ul>
+      <AddOnsList values={values} setValues={setValues} />
     </SectionWithForm>
   );
 }

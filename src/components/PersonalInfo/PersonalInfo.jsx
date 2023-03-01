@@ -6,7 +6,15 @@ import PropTypes from 'prop-types';
 import './PersonalInfo.scss';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
-import { PERSONAL_INFO_SUBTITLE, PERSONAL_INFO_TITLE } from '../../utils/constants';
+import {
+  EMAIL_PLACEHOLDER,
+  NAME_PLACEHOLDER,
+  PERSONAL_INFO_SUBTITLE,
+  PERSONAL_INFO_TITLE,
+  PHONE_PLACEHOLDER,
+} from '../../utils/constants';
+import hasEmptyValue from '../../utils/hasEmptyValues';
+import InputField from './InputField';
 
 function PersonalInfo({
   handleUpdate,
@@ -28,7 +36,7 @@ function PersonalInfo({
 
   useEffect(() => {
     setValues(personalData);
-    setIsValid();
+    setIsValid(!hasEmptyValue(personalData));
   }, []);
 
   return (
@@ -39,48 +47,33 @@ function PersonalInfo({
       onUpdate={handleSubmitPersonal}
       isValid={isValid}
     >
-      <label htmlFor="userName" className="personal-info-label">
-        <span className="personal-info-label-text">Name</span>
-        <span className="personal-info-error-text">{errors.userName}</span>
-        <input
-          type="text"
-          name="userName"
-          id="userName"
-          className={`personal-info-input ${errors.userName ? 'personal-info-input_state_error' : ''}`}
-          placeholder="e.g. Stephen King"
-          value={values.userName || ''}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label htmlFor="userEmail" className="personal-info-label">
-        <span className="personal-info-label-text">E-mail</span>
-        <span className="personal-info-error-text">{errors.email}</span>
-        <input
-          type="email"
-          name="email"
-          id="userEmail"
-          className={`personal-info-input ${errors.email ? 'personal-info-input_state_error' : ''}`}
-          placeholder="e.g. stephenking@lorem.com"
-          value={values.email || ''}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label htmlFor="userPhone" className="personal-info-label">
-        <span className="personal-info-label-text">Phone number</span>
-        <span className="personal-info-error-text">{errors.phone}</span>
-        <input
-          type="tel"
-          name="phone"
-          id="userPhone"
-          className={`personal-info-input ${errors.phone ? 'personal-info-input_state_error' : ''}`}
-          placeholder="e.g. +1 234 567 890"
-          value={values.phone || ''}
-          onChange={handleChange}
-          required
-        />
-      </label>
+      <InputField
+        type="text"
+        name="userName"
+        label="Name"
+        placeholder={NAME_PLACEHOLDER}
+        value={values.userName || ''}
+        error={errors.userName || ''}
+        onChange={handleChange}
+      />
+      <InputField
+        type="email"
+        name="email"
+        label="Email"
+        placeholder={EMAIL_PLACEHOLDER}
+        value={values.email || ''}
+        error={errors.email || ''}
+        onChange={handleChange}
+      />
+      <InputField
+        type="tel"
+        name="phone"
+        label="Phone"
+        placeholder={PHONE_PLACEHOLDER}
+        value={values.phone || ''}
+        error={errors.phone || ''}
+        onChange={handleChange}
+      />
     </SectionWithForm>
   );
 }
