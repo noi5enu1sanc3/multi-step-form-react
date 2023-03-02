@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotal, goBack, goNext } from '../../store/formUpdaterSlice';
