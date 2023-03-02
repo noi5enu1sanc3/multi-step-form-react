@@ -4,7 +4,7 @@
 
 This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Deployment](https://noi5enu1sanc3.github.io/multi-step-form-react/)
 
 ### Built with
 
