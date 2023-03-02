@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './Billing.scss';
 import PropTypes from 'prop-types';
@@ -8,15 +8,10 @@ import BillingSlider from './BillingSlider';
 import BillingOptionsList from './BillingOptionsList';
 
 function Billing({ handleUpdate }) {
-  const [values, setValues] = useState({ plan: 'arcade', cost: 9, monthly: true });
-
   const billingData = useSelector((state) => state.formUpdater.data.billing);
+  const [values, setValues] = useState(billingData);
 
   const handleSubmitBilling = () => { handleUpdate({ billing: values }); };
-
-  useEffect(() => {
-    setValues(billingData);
-  }, []);
 
   return (
     <SectionWithForm
