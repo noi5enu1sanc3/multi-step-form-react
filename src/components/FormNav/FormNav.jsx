@@ -70,4 +70,4 @@ FormNav.propTypes = {
   isNextButtonActive: PropTypes.bool,
 };
 
-export default memo(FormNav);
+export default FormNav;
