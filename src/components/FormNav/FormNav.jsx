@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { calculateTotal, goBack, goNext } from './formUpdaterSlice';
+import { calculateTotal, goBack, goNext } from '../../store/formUpdaterSlice';
 import './FormNav.scss';
 import { SUMMARY_SECTION_STEP_NUMBER } from '../../utils/constants';
 

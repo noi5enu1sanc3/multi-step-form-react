@@ -1,7 +1,7 @@
 import './Summary.scss';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { jumpToStep } from '../FormNav/formUpdaterSlice';
+import { jumpToStep } from '../../store/formUpdaterSlice';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';
 import {
   BILLING_SECTION_STEP_NUMBER,

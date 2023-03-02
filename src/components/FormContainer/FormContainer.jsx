@@ -4,7 +4,7 @@ import AddOns from '../AddOns/AddOns';
 import Summary from '../Summary/Summary';
 import Billing from '../Billing/Billing';
 import PersonalInfo from '../PersonalInfo/PersonalInfo';
-import { setData } from '../FormNav/formUpdaterSlice';
+import { setData } from '../../store/formUpdaterSlice';
 import Result from '../Result/Result';
 import {
   ADDONS_SECTION_STEP_NUMBER,

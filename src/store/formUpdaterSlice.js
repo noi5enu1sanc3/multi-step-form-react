@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DEFAULT_PLAN, DEFAULT_PLAN_COST } from '../../utils/constants';
+import { DEFAULT_PLAN, DEFAULT_PLAN_COST } from '../utils/constants';
 
 const initialState = {
   step: 1,

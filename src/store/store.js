@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import formUpdaterReducer from '../components/FormNav/formUpdaterSlice';
+import formUpdaterReducer from './formUpdaterSlice';
 
 export default configureStore({
   reducer: {
