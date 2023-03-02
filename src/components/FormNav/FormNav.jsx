@@ -1,7 +1,5 @@
 import { memo } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotal, goBack, goNext } from './formUpdaterSlice';
 import './FormNav.scss';

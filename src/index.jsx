@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import App from './components/App/App';
 import './components/sassStyles/_global.scss';

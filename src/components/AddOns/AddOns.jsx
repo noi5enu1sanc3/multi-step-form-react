@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector } from 'react-redux';
 import './AddOns.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import AddOnsList from './AddOnsList';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';

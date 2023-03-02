@@ -1,6 +1,5 @@
 import './Summary.scss';
 import { useCallback } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { jumpToStep } from '../FormNav/formUpdaterSlice';
 import SectionWithForm from '../SectionWithForm/SectionWithForm';

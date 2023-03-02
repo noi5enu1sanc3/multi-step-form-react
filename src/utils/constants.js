@@ -1,6 +1,3 @@
-// session storage
-export const STORE_KEY = 'form data';
-
 // section order
 export const PERSONAL_INFO_SECTION_STEP_NUMBER = 1;
 export const BILLING_SECTION_STEP_NUMBER = 2;
@@ -21,7 +18,6 @@ export const RESULT_TITLE_SUCESS = 'Thank you';
 export const RESULT_SUBTITLE_SUCESS = 'Thanks for confirming your subscription!';
 
 // step bar step titles
-
 export const PERSONAL_INFO_STEP_TITLE = 'Your info';
 export const BILLING_STEP_TITLE = 'Select plan';
 export const ADDONS_STEP_TITLE = 'Add-ons';

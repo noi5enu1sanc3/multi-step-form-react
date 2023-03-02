@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice } from '@reduxjs/toolkit';
 import { DEFAULT_PLAN, DEFAULT_PLAN_COST } from '../../utils/constants';
 

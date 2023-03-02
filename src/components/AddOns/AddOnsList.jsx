@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import servicesData from '../../utils/services.json';
 import AddOnItem from './AddOnItem';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import './FormContainer.scss';
 import AddOns from '../AddOns/AddOns';

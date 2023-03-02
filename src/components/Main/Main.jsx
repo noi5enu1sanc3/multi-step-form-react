@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector } from 'react-redux';
 import './Main.scss';
 import StepsBar from '../StepsBar/StepsBar';

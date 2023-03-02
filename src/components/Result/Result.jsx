@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector } from 'react-redux';
 import { RESULT_SUBTITLE_SUCESS, RESULT_TITLE_SUCESS } from '../../utils/constants';
 import './Result.scss';
