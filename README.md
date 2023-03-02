@@ -1,10 +1,10 @@
 ### Multi-step form
 
-![](./screenshot.jpg)
+- [View project](https://noi5enu1sanc3.github.io/multi-step-form-react/)
+
+[![SCR-20230302-qx1.png](https://i.postimg.cc/RhcHwGVC/SCR-20230302-qx1.png)](https://postimg.cc/Lg85pt1G)
 
 This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
-
-- [Deployment](https://noi5enu1sanc3.github.io/multi-step-form-react/)
 
 ### Built with
 
