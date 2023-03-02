@@ -2,7 +2,7 @@
 
 - [View project](https://noi5enu1sanc3.github.io/multi-step-form-react/)
 
-[![SCR-20230302-qx1.png](https://i.postimg.cc/BQkrjgPP/SCR-20230302-qx1.png)](https://postimg.cc/6yVjSC0B)
+[![screencapture-noi5enu1sanc3-github-io-multi-step-form-react-2023-03-02-19-29-05.png](https://i.postimg.cc/CxPpFgHY/screencapture-noi5enu1sanc3-github-io-multi-step-form-react-2023-03-02-19-29-05.png)](https://postimg.cc/18qjHbjY)
 
 This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
